@@ -44,7 +44,7 @@ public class Course {
 	private List<Media> content = new LinkedList<Media>();
 
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "course_student_map", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
+	@JoinTable(name = "course_student_map", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "profile_id"))
 	private List<Student> students = new LinkedList<Student>();
 	
 	@OneToOne(cascade = CascadeType.ALL)

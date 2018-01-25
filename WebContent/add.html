@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Movie</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <img src="../images/projector-logo.png" class="fleft" alt="logo">
+        <ul class="fright" id="navBar">
+            <li>
+                <a id="home" href="/">Home</a>
+            </li>
+            <li>
+                <a id="addMovie" href="views/add.html">Add Movie</a>
+            </li>
+        </ul>
+
+    </header>
+    <section>
+        <div class="clear-all"></div>
+
+        <form action="/movies/add" method="POST" id="addMovieForm">
+            <h1>Add a Movie</h1>
+            <div class="form-label">
+                <label for="name">Movie Name</label>
+            </div>
+            <div class="form-group">
+                <input type="text" name="name" id="name" required>
+            </div>
+            <div class="form-label">
+                <label for="releaseYear">Release Year</label>
+            </div>
+            <div class="form-group">
+                <input type="number" name="releaseYear" id="movieYear" required>
+            </div>
+            <div class="form-group">
+                <div class="fleft">
+                    <div class="form-label">
+                        <label for="movielang">Language</label>
+                    </div>
+                    <div>
+                        <select name="language" id="movieLang" required>
+                            <option value="Tamil">Tamil</option>
+                            <option value="English">English</option>
+                            <option value="Hindi">Hindi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="fright">
+                    <div class="form-label">
+                        <label for="movieRating">Rating</label>
+                    </div>
+                    <div>
+                        <select name="rating" id="movieRating">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="clear-all"></div>
+            </div>
+            <div class="form-label">
+                <label for="movieThumbUrl">Thumbnail URL</label>
+            </div>
+            <div class="form-group">
+                <input type="url" name="thumbnailUrl" id="movieThumbUrl" required>
+            </div>
+            <div class="form-label">
+                <label for="moviePlot">Plot</label>
+            </div>
+            <div class="form-group">
+                <textarea rows=5 cols=19 name="plot" id="moviePlot"></textarea>
+            </div>
+            <div class="form-label">
+                <label for="moviePostUrl">Posters URL</label>
+            </div>
+            <div class="form-group">
+                <input type="url" name="posterUrl" id="moviePostUrl" required>
+            </div>
+            <div class="form-label">
+                <label for="cast">Cast</label>
+            </div>
+            <div class="form-group">
+                <textarea rows=5 cols=19 name="cast" id="movieCast" required></textarea>
+            </div>
+            <div>
+                <input class="btn" type="submit" name="submit" id="saveButton" value="Save">
+            </div>
+        </form>
+    </section>
+    <footer>
+        <div class="fleft">
+            <a href="#">
+                <img class="social" src="../images/facebook.png" alt="facebook">
+            </a>
+            <a href="#">
+                <img class="social" src="../images/twitter.png" alt="facebook">
+            </a>
+            <a href="#">
+                <img class="social" src="../images/instagram.png" alt="facebook">
+            </a>
+        </div>
+        <div class="fright">
+            <img src="../images/projector-logo.png" alt="projector-logo">
+        </div>
+        <div class="clear-all"></div>
+    </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+    crossorigin="anonymous"></script>
+<script src="../javascripts/movieDetail.js"></script>
+
+</html>

@@ -12,7 +12,7 @@
 
 		<!-- Database connection settings -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/edutor_db</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password"></property>
 
@@ -37,6 +37,8 @@
 		<mapping class="com.edutor.models.Address" />
 		<mapping class="com.edutor.models.Course" />
 		<mapping class="com.edutor.models.Media" />
+		<mapping class="com.edutor.models.Student" />
+		<mapping class="com.edutor.models.Instructor" />
 	</session-factory>
 
 </hibernate-configuration>
