@@ -1,5 +1,59 @@
-body {
-	color: #442d4b;
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+body{
+	color:white;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+body>.container {
+	padding: 60px 15px 0;
+}
+
+.container .text-muted {
+	margin: 20px 0;
+}
+
+.footer>.container {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+code {
+	font-size: 80%;
+}
+
+.footer {
+	background-color: black;
+}
+
+a:link {
+	font-size: 18px;
+	color: white;
+}
+
+a:visited {
+	font-size: 18px;
+	color: white;
+}
+
+a:hover {
+	font-size: 18px;
+	color: white;
 }
 
 .fleft {
@@ -14,45 +68,141 @@ body {
 	clear: both;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+.navbar-default {
+	background-color: #253e57;
+	color: white;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+myStyle {
+	color: white;
 }
 
-
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-body > .container {
-  padding: 60px 15px 0;
-}
-.container .text-muted {
-  margin: 20px 0;
+#navbar ul li a {
+	color: white;
 }
 
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff;
 }
 
-code {
-  font-size: 80%;
+.social {
+	width: 40px;
+	margin: 5px;
 }
-.footer{
-	background-color: black;
+nav .navbar-header{
+	margin: 0 20px 0 20px;
+	padding:0;
 }
 nav{
-	background-color: #15d4ae;
+	margin: 0;
+}
+.poster{
+	width:100%;
+}
+body{
+	background-image: url("../images/edutor_bg.jpg");
+	background-size: 100%;
+}
+.form-holder {
+    width: 460px;
+    margin: 10px auto;
+    background: none;
+    padding: 10px;
+    font-size: 14px;
+}
+
+fieldset {
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px solid #253e57;
+    border-radius: 5px;
+}
+
+legend {
+    color: #253e57;
+}
+
+.row-content {
+    margin: 5px 0;
+}
+
+label {
+    display: block;
+    padding: 5px 0;
+    color:#253e57;
+}
+
+input[type=text],
+input[type=password],
+select {
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    display: inline-block;
+    border-bottom: 2px solid #253e57;
+    margin: 10px 0;
+    -webkit-transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    transition: all ease 0.5s;
+    border-radius: 3px;
+}
+
+input[type=text]:hover,
+input[type=text]:focus,
+input[type=password]:hover,
+input[type=password]:focus{
+    border-color: #253e57;
+}
+
+.fullwidth {
+    width: 406px;
+}
+
+.halfwidth {
+    width: 180px;
+    display: inline-block;
+}
+
+.halfwidth:last-child {
+    margin-left: 22px;
+}
+
+.quaterwidth {
+    width: 120px;
+    margin-left: 10px;
+}
+
+.thirdwidth {
+    width: 270px;
+}
+
+.sameline {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.sameline:last-child {
+    margin-left: 5px;
+}
+
+.btn {
+    margin: 0 auto;
+    display: block;
+    width: 100px;
+    border: 2px solid #253e57;
+    background: #253e57;
+    color: white;
+    padding: 10px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 3px;
+    cursor: pointer;
+    -webkit-transition: all ease 0.5s;
+    -moz-transition: all ease 0.5s;
+    transition: all ease 0.5s;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: #253e57;
 }
