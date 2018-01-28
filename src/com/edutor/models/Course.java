@@ -20,11 +20,11 @@ import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name = "edt_course", catalog = "edutor_db")
-@TableGenerator(name = "course_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "course_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
+@TableGenerator(name = "course_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "course_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
 public class Course {
 	@Id
 	@Column(name = "course_id")
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.TABLE ,generator = "course_gen")
 	private Integer cousrseId;
 
 	@Column(name = "course_title")
@@ -48,7 +48,7 @@ public class Course {
 	private List<Student> students = new LinkedList<Student>();
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
+	@PrimaryKeyJoinColumn(name="course_instructor_map")
 	private Instructor instructor;
 
 	

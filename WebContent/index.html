@@ -34,7 +34,14 @@
 			<div class="fright">
 				<ul class="nav navbar-nav">
 					<li><a href="#about">About</a></li>
-					<li><a href="#/login" id="login_btn">Login/Signup</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Login/Signup </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#/login">Login</a> <a
+								class="dropdown-item" href="#/signup">Signup</a>
+						</div></li>
 				</ul>
 			</div>
 		</div>
@@ -42,24 +49,20 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-2 col-md-2"></div>
-			<div class="col-sm-4 col-md-4">
+			<div class="col-sm-1 col-md-1"></div>
+			<div class="col-sm-7 col-md-5">
 				<form class="form-holder">
 					<fieldset>
-						<legend>Personal Details</legend>
-						<div class="row-content">
-							<label for="username">Username</label> <input type="text"
-								class="fullwidth" name="username" id="username"
-								placeholder="Username Here" />
+						<legend>Login</legend>
+						<div class="form-group">
+							<input type="text" class="form-control" name="username"
+								id="username" placeholder="Username Here" />
 						</div>
-						<div class="row-content">
-							<label for="password">Password</label> <input type="password"
-								class="fullwidth" name="password" id="password"
-								placeholder="Password Here" />
+						<div class="form-group">
+							<input type="password" class="form-control" name="password"
+								id="password" placeholder="Password Here" />
 						</div>
-						<div class="row-content">
-							<button class="btn">Login</button>
-						</div>
+						<button class="btn myBtn btn-outline-primary btn-block">Login</button>
 					</fieldset>
 				</form>
 			</div>
@@ -82,4 +85,15 @@
 	</footer>
 </body>
 <script src="./js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
 </html>

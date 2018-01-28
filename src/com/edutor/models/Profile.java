@@ -16,10 +16,10 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "edt_user_profile", catalog = "edutor_db", uniqueConstraints = @UniqueConstraint(columnNames = {
 		"mail_id", "mobile_no" }))
-@TableGenerator(name = "course_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "profile_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
+@TableGenerator(name = "profile_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "profile_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
 public class Profile {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.TABLE,generator="profile_gen")
 	@Column(name = "profile_id")
 	private Integer profileId;
 

@@ -12,11 +12,11 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "edt_user", catalog = "edutor_db", uniqueConstraints = @UniqueConstraint(columnNames = { "username" }))
-@TableGenerator(name = "course_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "user_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
+@TableGenerator(name = "user_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "user_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
 public class User {
 	@Id
 	@Column(name = "user_id")
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.TABLE,generator="user_gen")
 	private Integer userId;
 
 	@Column(name = "username", nullable = false)

@@ -10,11 +10,11 @@ import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name = "edt_media",catalog = "edutor_db")
-@TableGenerator(name = "course_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "media_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
+@TableGenerator(name = "media_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "media_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
 public class Media {
 	@Id
 	@Column(name = "media_id")
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.TABLE,generator="media_gen")
 	private Integer mediaId;
 
 	@Column(name = "media_title")

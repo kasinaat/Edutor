@@ -104,22 +104,22 @@ body{
 	background-size: 100%;
 }
 .form-holder {
-    width: 460px;
     margin: 10px auto;
-    background: none;
-    padding: 10px;
+    background: #c1c7ce;
     font-size: 14px;
 }
 
 fieldset {
     margin: 20px 0;
-    padding: 15px;
+    padding: 45px;
     border: 2px solid #253e57;
     border-radius: 5px;
+    box-shadow:0 0 10px #999;
 }
 
 legend {
     color: #253e57;
+    font-size:30px;
 }
 
 .row-content {
@@ -133,13 +133,12 @@ label {
 }
 
 input[type=text],
-input[type=password],
-select {
+input[type=password] {
     border: 0;
     outline: 0;
     padding: 10px;
     display: inline-block;
-    border-bottom: 2px solid #253e57;
+    border-bottom: 2px solid white;
     margin: 10px 0;
     -webkit-transition: all ease 0.5s;
     -moz-transition: all ease 0.5s;
@@ -185,14 +184,11 @@ input[type=password]:focus{
     margin-left: 5px;
 }
 
-.btn {
-    margin: 0 auto;
-    display: block;
-    width: 100px;
+.myBtn {
+    margin: 0 0 0 10px;
+
     border: 2px solid #253e57;
-    background: #253e57;
     color: white;
-    padding: 10px 5px;
     font-size: 14px;
     font-weight: bold;
     border-radius: 3px;
