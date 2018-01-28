@@ -14,8 +14,7 @@ import javax.persistence.TableGenerator;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "edt_user_profile", catalog = "edutor_db", uniqueConstraints = @UniqueConstraint(columnNames = {
-		"mail_id", "mobile_no" }))
+@Table(name = "edt_user_profile", catalog = "edutor_db", uniqueConstraints = @UniqueConstraint(columnNames = { "mobile_no" }))
 @TableGenerator(name = "profile_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "profile_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
 public class Profile {
 	@Id
@@ -41,17 +40,6 @@ public class Profile {
 
 	@Column(name = "p_description")
 	private String description;
-
-	@Column(name = "mail_id")
-	private String emailId;
-
-	public String getEmailId() {
-		return emailId;
-	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
 
 	@Embedded
 	@Column(name = "address")

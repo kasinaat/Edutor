@@ -17,25 +17,6 @@ body{
 	background-color: #f5f5f5;
 }
 
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-body>.container {
-	padding: 60px 15px 0;
-}
-
-.container .text-muted {
-	margin: 20px 0;
-}
-
-.footer>.container {
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-code {
-	font-size: 80%;
-}
 
 .footer {
 	background-color: black;
@@ -133,7 +114,8 @@ label {
 }
 
 input[type=text],
-input[type=password] {
+input[type=password],
+input[type=email] {
     border: 0;
     outline: 0;
     padding: 10px;
@@ -149,7 +131,9 @@ input[type=password] {
 input[type=text]:hover,
 input[type=text]:focus,
 input[type=password]:hover,
-input[type=password]:focus{
+input[type=password]:focus,
+input[type=email]:hover,
+input[type=email]:focus{
     border-color: #253e57;
 }
 
@@ -185,17 +169,13 @@ input[type=password]:focus{
 }
 
 .myBtn {
-    margin: 0 0 0 10px;
-
     border: 2px solid #253e57;
     color: white;
+    background-color:#253e57;
     font-size: 14px;
     font-weight: bold;
     border-radius: 3px;
     cursor: pointer;
-    -webkit-transition: all ease 0.5s;
-    -moz-transition: all ease 0.5s;
-    transition: all ease 0.5s;
 }
 
 .btn:hover,

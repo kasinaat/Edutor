@@ -2,38 +2,33 @@ package com.edutor.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.TableGenerator;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "edt_user", catalog = "edutor_db", uniqueConstraints = @UniqueConstraint(columnNames = { "username" }))
-@TableGenerator(name = "user_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "user_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
+@Table(name = "edt_user", catalog = "edutor_db",uniqueConstraints = @UniqueConstraint(columnNames = { "mail_id" }))
 public class User {
 	@Id
-	@Column(name = "user_id")
-	@GeneratedValue(strategy = GenerationType.TABLE,generator="user_gen")
-	private Integer userId;
-
 	@Column(name = "username", nullable = false)
 	private String username;
 
 	@Column(name = "password", nullable = false)
 	private String password;
-	
+
 	@OneToOne(mappedBy = "user")
 	private Profile profile;
+	
+	@Column(name = "mail_id")
+	private String emailId;
 
-	public Integer getUserId() {
-		return userId;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	public String getUsername() {
