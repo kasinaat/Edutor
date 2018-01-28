@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Edutor::An e-Learning Platform</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Lato:300"
+	rel="stylesheet">
+</head>
+
+<body>
+	<nav class="navbar navbar-default my">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+
+			<a class="navbar-brand" href="#"> <span onclick="openNav()"
+				style="font-size: 30px; cursor: pointer">&#9776;</span>Edutor
+			</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="#">Home</a></li>
+				<li><a href="#contact">Courses</a></li>
+			</ul>
+			<div class="fright">
+				<ul class="nav navbar-nav">
+					<li><a href="#about">About</a></li>
+					<li><a href="#" id="current_user">UserName</a></li>
+				</ul>
+			</div>
+		</div>
+		<!--/.nav-collapse -->
+	</nav>
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class="user">
+			<img alt="image" class="profile-image" src="./images/facebook.png">
+		</div>
+		<div class="user user-text">
+			<span id="currentUser">Username</span>
+		</div>
+
+		<a href="#">My Dashboard</a> <a href="#">My Courses</a> <a href="#">Chat</a>
+		<a href="#">Settings</a> <a href="#">Logout</a>
+	</div>
+	<div class="container"></div>
+	<!-- Begin page content -->
+	<footer class="footer">
+		<div class="container">
+			<div class="fleft">
+				<a href="#"> <img class="social" src="./images/facebook.png"
+					alt="facebook">
+				</a> <a href="#"> <img class="social" src="./images/twitter.png"
+					alt="twitter">
+				</a> <a href="#"> <img class="social" src="./images/instagram.png"
+					alt="insta">
+				</a>
+			</div>
+			<div class="clear-all"></div>
+		</div>
+	</footer>
+</body>
+<script src="./js/dashboard.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	crossorigin="anonymous"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+</html>

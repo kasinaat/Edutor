@@ -4,6 +4,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,11 +16,12 @@ import javax.persistence.TableGenerator;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "edt_user_profile", catalog = "edutor_db", uniqueConstraints = @UniqueConstraint(columnNames = { "mobile_no" }))
-@TableGenerator(name = "profile_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "profile_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
+@Table(name = "edt_user_profile", catalog = "edutor_db", uniqueConstraints = @UniqueConstraint(columnNames = {
+		"mobile_no" }))
+@TableGenerator(name = "profile_gen", table = "id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "profile_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
 public class Profile {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE,generator="profile_gen")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "profile_gen")
 	@Column(name = "profile_id")
 	private Integer profileId;
 
@@ -35,11 +38,15 @@ public class Profile {
 	private String avatar;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="user_fk")
+	@JoinColumn(name = "user_fk")
 	private User user;
 
 	@Column(name = "p_description")
 	private String description;
+	
+	@Column
+	@Enumerated(EnumType.STRING)
+	private ProfileStatus status = ProfileStatus.INCOMPLETE;
 
 	@Embedded
 	@Column(name = "address")
@@ -107,5 +114,13 @@ public class Profile {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public ProfileStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(ProfileStatus status) {
+		this.status = status;
 	}
 }

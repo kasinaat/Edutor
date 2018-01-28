@@ -7,12 +7,12 @@ import com.edutor.models.User;
 
 public class UserService {
 
-	public boolean login(String username ) {
+	public boolean login(String username) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		boolean status = false;
 		session.beginTransaction();
 		User user = session.get(User.class, username);
-		if(user != null)
+		if (user != null)
 			status = true;
 		session.getTransaction().commit();
 		session.close();
@@ -36,9 +36,11 @@ public class UserService {
 		session.getTransaction().commit();
 		return status;
 	}
-	
-	public boolean addProfile(){
+
+	public boolean setProfile(String firstName, String lastName, Long mobile, String street, String city,
+			String district, String state, int pincode, String desc) {
 		boolean status = false;
+		
 		return status;
 	}
 }
