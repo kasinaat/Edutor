@@ -1,0 +1,207 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+	position: relative;
+	min-height: 100%;
+}
+body{
+    background-color: #c1c7ce;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 80px;
+	background-color: #f5f5f5;
+}
+
+.footer {
+	background-color: black;
+}
+
+a:link {
+	font-size: 18px;
+	color: white;
+}
+
+a:visited {
+	font-size: 18px;
+	color: white;
+}
+
+a:hover {
+	font-size: 18px;
+	color: white;
+}
+
+.fleft {
+	float: left;
+}
+
+.fright {
+	float: right;
+}
+
+.clear-all {
+	clear: both;
+}
+
+.navbar-default {
+	background-color: #253e57;
+	color: white;
+}
+
+myStyle {
+	color: white;
+}
+
+#navbar ul li a {
+	color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+	background-color: #fff;
+}
+
+.social {
+	width: 40px;
+	margin: 5px;
+}
+
+nav .navbar-header {
+	margin: 0 20px 0 20px;
+	padding: 0;
+}
+
+nav {
+	margin: 0;
+}
+
+.poster {
+	width: 100%;
+}
+
+.form-holder {
+	margin: 10px auto;
+	background: #c1c7ce;
+	font-size: 14px;
+}
+
+fieldset {
+	margin: 20px 0;
+	padding: 45px;
+	border: 2px solid #253e57;
+	border-radius: 5px;
+	box-shadow: 0 0 10px #999;
+}
+
+legend {
+	color: #253e57;
+	font-size: 30px;
+}
+
+.row-content {
+	margin: 5px 0;
+}
+
+label {
+	display: block;
+	padding: 5px 0;
+	color: #253e57;
+}
+
+input[type=text], input[type=password], input[type=email] {
+	border: 0;
+	outline: 0;
+	padding: 10px;
+	display: inline-block;
+	border-bottom: 2px solid white;
+	margin: 10px 0;
+	-webkit-transition: all ease 0.5s;
+	-moz-transition: all ease 0.5s;
+	transition: all ease 0.5s;
+	border-radius: 3px;
+}
+
+input[type=text]:hover, input[type=text]:focus, input[type=password]:hover,
+	input[type=password]:focus, input[type=email]:hover, input[type=email]:focus
+	{
+	border-color: #253e57;
+}
+
+.sameline {
+	display: inline-block;
+}
+
+.profile-image {
+	border-radius: 50%;
+	width: 100px;
+	margin: 5px;
+	display: inline-block;
+}
+
+#currentUser {
+    font-size: 25px;
+}
+
+.user {
+	margin: 0 0 0 50px;
+}
+
+.myBtn {
+	border: 2px solid #253e57;
+	color: white;
+	background-color: #253e57;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.btn:hover, .btn:focus {
+	background-color: #253e57;
+}
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidenav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.sidenav a:hover, .offcanvas a:focus {
+	color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}

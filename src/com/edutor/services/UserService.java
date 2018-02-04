@@ -3,44 +3,56 @@ package com.edutor.services;
 import org.hibernate.Session;
 
 import com.edutor.main.HibernateUtil;
+import com.edutor.models.Profile;
 import com.edutor.models.User;
 
 public class UserService {
 
-	public boolean login(String username) {
+	public static boolean login(String username,String password) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		boolean status = false;
 		session.beginTransaction();
 		User user = session.get(User.class, username);
-		if (user != null)
+		if (user != null && user.getPassword().equals(password)){
 			status = true;
+		}
 		session.getTransaction().commit();
 		session.close();
 		return status;
 	}
 
-	public boolean usernameAvailability(String username) {
+	public static boolean usernameAvailability(String username) {
 		// TODO
 		return true;
 	}
 
-	public boolean signup(String emailId, String username, String password) {
+	public static boolean signup(String emailId, String username, String password) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		boolean status = false;
 		User user = new User();
 		user.setUsername(username);
 		user.setEmailId(emailId);
 		user.setPassword(password);
 		session.save(user);
 		session.getTransaction().commit();
-		return status;
+		return true;
 	}
 
-	public boolean setProfile(String firstName, String lastName, Long mobile, String street, String city,
+	public static boolean setProfile(String firstName, String lastName, Long mobile, String street, String city,
 			String district, String state, int pincode, String desc) {
 		boolean status = false;
 		
+		return status;
+	}
+	public static boolean getProfileStatus(String username){
+		boolean status = false;
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		Profile profile = new Profile();
+		profile = session.get(Profile.class, username);
+		if(profile.getStatus().equals("COMPLETE")){
+			status = true;
+		}
 		return status;
 	}
 }

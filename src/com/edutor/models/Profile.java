@@ -43,11 +43,15 @@ public class Profile {
 
 	@Column(name = "p_description")
 	private String description;
-	
-	@Column
+
+	@Column(name = "profile_status")
 	@Enumerated(EnumType.STRING)
 	private ProfileStatus status = ProfileStatus.INCOMPLETE;
 
+	@Column(name = "profile_type")
+	@Enumerated(EnumType.STRING)
+	private ProfileType type = ProfileType.STUDENT;
+	
 	@Embedded
 	@Column(name = "address")
 	private Address address;
