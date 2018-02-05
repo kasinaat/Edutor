@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter(urlPatterns = { "dashboard.html" ,"/"}, servletNames = { "LoginServlet" })
+@WebFilter(urlPatterns = { "/dashboard.html" ,"/"}, servletNames = { "LoginServlet" })
 public class LoginFilter implements Filter {
 
 	public LoginFilter() {

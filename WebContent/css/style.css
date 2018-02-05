@@ -3,13 +3,19 @@
 html {
 	position: relative;
 	min-height: 100%;
+	height: 100%;
+	/*Image only BG fallback*/
+	
 }
+
 
 body {
 	color: white;
-	background-image: url("../images/edutor_bg.jpg");
-	background-size: 100%;
-	background-attachment: fixed;
+	background: url('http://thecodeplayer.com/uploads/media/gs.png');
+	/*background = gradient + image pattern combo*/
+	background: 
+		linear-gradient(rgba(196, 102, 0, 0.2), rgba(155, 89, 182, 0.2)), 
+		url('http://thecodeplayer.com/uploads/media/gs.png');
 }
 
 .footer {
@@ -25,6 +31,10 @@ body {
 	background-color: black;
 }
 
+.alert{
+	color:red;
+	font-size: 15px;
+}
 a:link {
 	font-size: 18px;
 	color: white;
@@ -93,47 +103,6 @@ nav {
 	font-size: 14px;
 }
 
-fieldset {
-	margin: 20px 0;
-	padding: 45px;
-	border: 2px solid #253e57;
-	border-radius: 5px;
-	box-shadow: 0 0 10px #999;
-}
-
-legend {
-	color: #253e57;
-	font-size: 30px;
-}
-
-.row-content {
-	margin: 5px 0;
-}
-
-label {
-	display: block;
-	padding: 5px 0;
-	color: #253e57;
-}
-
-input[type=text], input[type=password], input[type=email] {
-	border: 0;
-	outline: 0;
-	padding: 10px;
-	display: inline-block;
-	border-bottom: 2px solid white;
-	margin: 10px 0;
-	-webkit-transition: all ease 0.5s;
-	-moz-transition: all ease 0.5s;
-	transition: all ease 0.5s;
-	border-radius: 3px;
-}
-
-input[type=text]:hover, input[type=text]:focus, input[type=password]:hover,
-	input[type=password]:focus, input[type=email]:hover, input[type=email]:focus
-	{
-	border-color: #253e57;
-}
 
 .sameline {
 	display: inline-block;
@@ -152,20 +121,6 @@ input[type=text]:hover, input[type=text]:focus, input[type=password]:hover,
 
 .user {
 	margin: 0 0 0 50px;
-}
-
-.myBtn {
-	border: 2px solid #253e57;
-	color: white;
-	background-color: #253e57;
-	font-size: 14px;
-	font-weight: bold;
-	border-radius: 3px;
-	cursor: pointer;
-}
-
-.btn:hover, .btn:focus {
-	background-color: #253e57;
 }
 
 .sidenav {
@@ -209,4 +164,118 @@ input[type=text]:hover, input[type=text]:focus, input[type=password]:hover,
 	.sidenav a {
 		font-size: 18px;
 	}
+}/*form styles*/
+#msform {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
 }
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	
+	/*stacking fieldsets above each other*/
+	position: absolute;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+	display: none;
+}
+/*inputs*/
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+/*buttons*/
+#msform .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/*headings*/
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#progressbar li {
+	list-style-type: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 10px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: white;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #27AE60;
+	color: white;
+}
+

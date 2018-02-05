@@ -41,12 +41,9 @@ public class Profile {
 	@JoinColumn(name = "user_fk")
 	private User user;
 
-	@Column(name = "p_description")
-	private String description;
-
 	@Column(name = "profile_status")
 	@Enumerated(EnumType.STRING)
-	private ProfileStatus status = ProfileStatus.INCOMPLETE;
+	private ProfileStatus status = ProfileStatus.COMPLETE;
 
 	@Column(name = "profile_type")
 	@Enumerated(EnumType.STRING)
@@ -96,13 +93,6 @@ public class Profile {
 		this.avatar = avatar;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
 
 	public Address getAddress() {
 		return address;
