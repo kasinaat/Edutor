@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-@WebFilter(urlPatterns = { "/dashboard.html" ,"/"}, servletNames = { "LoginServlet" })
+@WebFilter(urlPatterns = { "/dashboard.html", "/" }, servletNames = { "LoginServlet" })
 public class LoginFilter implements Filter {
 
 	public LoginFilter() {
@@ -26,11 +26,13 @@ public class LoginFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		boolean status = false;
+		System.out.println("Filter Called!!");
 		Cookie[] cookies = request.getCookies();
 		if (cookies != null) {
 			for (Cookie ck : cookies) {
 				if ("currentUser".equals(ck.getName())) {
 					status = true;
+					System.out.println("If condition in Filter Called!!");
 					request.getRequestDispatcher("dashboard.html").forward(request, res);
 					break;
 				}
@@ -38,7 +40,7 @@ public class LoginFilter implements Filter {
 			if (status == false) {
 				request.getRequestDispatcher("/").forward(request, res);
 			}
-			
+
 		} else {
 			request.getRequestDispatcher("/").forward(request, res);
 		}
@@ -48,6 +50,6 @@ public class LoginFilter implements Filter {
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

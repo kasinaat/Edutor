@@ -16,13 +16,13 @@ import com.edutor.services.UserService;
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-  
-    public LoginServlet() {
-        super();
-    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public LoginServlet() {
+		super();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		response.setContentType("text/html");
@@ -32,14 +32,17 @@ public class LoginServlet extends HttpServlet {
 			response.addCookie(cookie);
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
-			response.sendRedirect("dashboard.html");
+			if (username.equals("admin")) {
+				response.sendRedirect("admin.html");
+			} else {
+				response.sendRedirect("dashboard.html");
+			}
 			pw.close();
-
 		}
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

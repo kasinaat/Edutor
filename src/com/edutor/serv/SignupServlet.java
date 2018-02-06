@@ -43,7 +43,7 @@ public class SignupServlet extends HttpServlet {
 			response.sendRedirect("dashboard.html");
 			pw.close();
 		}
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -75,7 +75,6 @@ public class UserService {
 			return true;
 		}
 	}
-
 	public static boolean signup(String emailId, String username, String password) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
