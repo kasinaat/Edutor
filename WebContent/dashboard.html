@@ -46,29 +46,29 @@
 		<div class="user user-text">
 			<span id="currentUser">Username</span>
 		</div>
-		
+
 
 		<a href="#">My Dashboard</a> <a href="#">My Courses</a> <a href="#">Chat</a>
-		<a href="#">Settings</a> <a id="logout_link" href="#">Logout</a>
+		<a id="setting_link" href="#">Settings</a> <a id="logout_link"
+			href="#">Logout</a>
 	</div>
-	<div class="container">
+	<div class="container">		
+		<div id="course-head">
+			<h1>{Username}'s Courses</h1>
+		</div>
+		<div class="course-list">
+		<!-- Template for list courses -->
+			<div class="course-one">
+				<div><img  class="course-img" src="images/aruvi.jpg" alt="course-avatar" /></div>
+				<div><span>{CourseName}</span></div>
+				<div><button class="btn btn-block btn-success">Start</button></div>
+			</div>
+		</div>
+		
 		
 	</div>
 	<!-- Begin page content -->
-	<footer class="footer">
-		<div class="container">
-			<div class="fleft">
-				<a href="#"> <img class="social" src="./images/facebook.png"
-					alt="facebook">
-				</a> <a href="#"> <img class="social" src="./images/twitter.png"
-					alt="twitter">
-				</a> <a href="#"> <img class="social" src="./images/instagram.png"
-					alt="insta">
-				</a>
-			</div>
-			<div class="clear-all"></div>
-		</div>
-	</footer>
+
 </body>
 <script src="./js/dashboard.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

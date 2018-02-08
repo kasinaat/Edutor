@@ -39,3 +39,14 @@ document.getElementById("logout_link").addEventListener("click",function(){
 	xhr.open("GET","logout");
 	xhr.send();
 });
+document.getElementById("setting_link").addEventListener("click",function(){
+	closeNav();
+	var ajx = new XMLHttpRequest();
+	ajx.open("GET","setting.html");
+	ajx.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			document.getElementById("content").innerHTML = this.responseText;
+		}
+	};
+	ajx.send();
+});

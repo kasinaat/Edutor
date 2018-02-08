@@ -38,6 +38,9 @@ public class Course {
 
 	@Column(name = "course_rating")
 	private Double rating;
+	
+	@Column(name="course_thumb")
+	private String courseAvatar;
 
 	@OneToMany
 	@JoinColumn(name = "media_id")
@@ -116,5 +119,13 @@ public class Course {
 
 	public void setStudents(List<Student> students) {
 		this.students = students;
+	}
+
+	public String getCourseAvatar() {
+		return courseAvatar;
+	}
+
+	public void setCourseAvatar(String courseAvatar) {
+		this.courseAvatar = courseAvatar;
 	}
 }
