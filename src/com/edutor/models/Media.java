@@ -31,7 +31,7 @@ public class Media {
 
 	@Column(name = "media_tag")
 	private String tag;
-
+	
 
 	public Integer getMediaId() {
 		return mediaId;

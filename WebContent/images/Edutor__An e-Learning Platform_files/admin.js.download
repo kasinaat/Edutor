@@ -46,11 +46,10 @@ function addCourses(data){
 	document.getElementById("content").innerHTML = data;
 	document.getElementById("createCourse").addEventListener("click",function(){
 		var name = document.getElementById("courseName").value;
-		localStorage.courseName = name;
 		var description = document.getElementById("courseDesc").value;
 		var ajx = new XMLHttpRequest();
 		ajx.open("GET","addcourse?name="+name+"&desc="+description);
-		document.getElementById("content").innerHTML = "<fieldset>\
+		document.getElementById("lessons").innerHTML = "<fieldset>\
 				<legend>Lessons</legend>\
 				<div class=\"form-group\">\
 					<input type=\"text\" placeholder=\"Lesson Name\" class=\"form-control\" />\
