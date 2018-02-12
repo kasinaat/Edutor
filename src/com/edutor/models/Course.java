@@ -1,11 +1,12 @@
 package com.edutor.models;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +26,7 @@ public class Course {
 	@Id
 	@Column(name = "course_id")
 	@GeneratedValue(strategy = GenerationType.TABLE ,generator = "course_gen")
-	private Integer cousrseId;
+	private Integer courseId;
 
 	@Column(name = "course_title")
 	private String courseTitle;
@@ -42,13 +43,13 @@ public class Course {
 	@Column(name="course_thumb")
 	private String courseAvatar;
 
-	@OneToMany
-	@JoinColumn(name = "media_id")
-	private List<Media> content = new LinkedList<Media>();
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "course_media_id",joinColumns = @JoinColumn(name = "course_id"),inverseJoinColumns = @JoinColumn(name="media_id"))
+	private Set<Media> content = new TreeSet<Media>();
 
 	@ManyToMany(cascade=CascadeType.ALL)
 	@JoinTable(name = "course_student_map", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "profile_id"))
-	private List<Student> students = new LinkedList<Student>();
+	private Set<Student> students = new TreeSet<Student>();
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn(name="course_instructor_map")
@@ -65,12 +66,12 @@ public class Course {
 	}
 
 
-	public Integer getCousrseId() {
-		return cousrseId;
+	public Integer getCourseId() {
+		return courseId;
 	}
 
-	public void setCousrseId(Integer cousrseId) {
-		this.cousrseId = cousrseId;
+	public void setCourseId(Integer cousrseId) {
+		this.courseId = cousrseId;
 	}
 
 	public String getCourseTitle() {
@@ -105,21 +106,6 @@ public class Course {
 		this.rating = rating;
 	}
 
-	public List<Media> getContent() {
-		return content;
-	}
-
-	public void setContent(List<Media> content) {
-		this.content = content;
-	}
-
-	public List<Student> getStudents() {
-		return students;
-	}
-
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
 
 	public String getCourseAvatar() {
 		return courseAvatar;
@@ -127,5 +113,21 @@ public class Course {
 
 	public void setCourseAvatar(String courseAvatar) {
 		this.courseAvatar = courseAvatar;
+	}
+
+	public Set<Media> getContent() {
+		return content;
+	}
+
+	public void setContent(Set<Media> content) {
+		this.content = content;
+	}
+
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
 	}
 }

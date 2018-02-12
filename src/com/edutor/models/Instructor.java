@@ -1,7 +1,7 @@
 package com.edutor.models;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,7 +21,7 @@ public class Instructor extends Profile {
 
 	@ManyToMany(cascade = { CascadeType.ALL })
 	@JoinTable(name = "ins_course_map", joinColumns = @JoinColumn(name = "ins_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
-	private List<Course> courses = new LinkedList<Course>();
+	private Set<Course> courses = new HashSet<Course>();
 
 	public Double getRating() {
 		return rating;
@@ -31,11 +31,13 @@ public class Instructor extends Profile {
 		this.rating = rating;
 	}
 
-	public List<Course> getCourses() {
+	public Set<Course> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(List<Course> courses) {
+	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
+
+
 }

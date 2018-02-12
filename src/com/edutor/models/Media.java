@@ -29,8 +29,11 @@ public class Media {
 	@Column(name = "media_location")
 	private String url;
 
-	@Column(name = "media_tag")
-	private String tag;
+	@Column(name = "lesson_name")
+	private String lessonName;
+	
+	@Column(name = "video_no")
+	private int videoNumber;
 	
 
 	public Integer getMediaId() {
@@ -73,12 +76,20 @@ public class Media {
 		this.url = url;
 	}
 
-	public String getTag() {
-		return tag;
+	public String getLessonName() {
+		return lessonName;
 	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setLessonName(String lessonName) {
+		this.lessonName = lessonName;
+	}
+
+	public int getVideoNumber() {
+		return videoNumber;
+	}
+
+	public void setVideoNumber(int videoNumber) {
+		this.videoNumber = videoNumber;
 	}
 
 }

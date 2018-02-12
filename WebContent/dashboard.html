@@ -13,7 +13,7 @@
 	rel="stylesheet">
 </head>
 
-<body>
+<body onload="setUserName()">
 	<nav class="navbar navbar-default my">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
@@ -29,6 +29,12 @@
 			</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
+			<div class="fleft">
+				<ul class="nav navbar-nav">
+					<li><a id="listCourses" href="#/courses">Courses</a></li>
+
+				</ul>
+			</div>
 			<div class="fright">
 				<ul class="nav navbar-nav">
 					<li><a href="#about">About</a></li>
@@ -49,28 +55,38 @@
 
 
 		<a href="#">My Dashboard</a> <a href="#">My Courses</a> <a href="#">Chat</a>
-		<a id="setting_link" href="#">Settings</a> <a id="logout_link"
-			href="#">Logout</a>
+		<a id="setting_link" href="#/settings">Settings</a> <a
+			id="logout_link" href="#/logout">Logout</a>
 	</div>
-	<div class="container">		
-		<div id="course-head">
-			<h1>{Username}'s Courses</h1>
-		</div>
-		<div class="course-list">
-		<!-- Template for list courses -->
-			<div class="course-one">
-				<div><img  class="course-img" src="images/aruvi.jpg" alt="course-avatar" /></div>
-				<div><span>{CourseName}</span></div>
-				<div><button class="btn btn-block btn-success">Start</button></div>
-			</div>
-		</div>
-		
-		
-	</div>
+	<div class="container" id="content-holder"></div>
 	<!-- Begin page content -->
 
 </body>
-<script src="./js/dashboard.js"></script>
+<script>
+	function getCookie(cname) {
+		var name = cname + "=";
+		var ca = document.cookie.split(';');
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+	function setUserName() {
+		if (getCookie("currentUser")) {
+			document.getElementById("current_user").innerHTML = getCookie("currentUser");
+			document.getElementById("currentUser").innerHTML = getCookie("currentUser");
+		} else {
+			window.location.href = "/edutor";
+		}
+	}
+</script>
+<script src="./js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 	crossorigin="anonymous"></script>

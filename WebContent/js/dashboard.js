@@ -50,3 +50,48 @@ document.getElementById("setting_link").addEventListener("click",function(){
 	};
 	ajx.send();
 });
+function renderCourses(data) {
+	var courseList = JSON.parse(data.responseText);
+	console.log(data.responseText);
+	var container = document.getElementById("content");
+	var result = "";
+	var resultTemplate = '<div id="products" class="list-group col-lg-12">{courses}</div>';
+	var listCourseTemplate = '<div class="item col-xs-10 col-lg-4">\
+        <div class="thumbnail">\
+    <img class="group list-group-image" src="images/instagram.png" alt="" />\
+    <div class="caption">\
+        <p class="group inner list-group-item-heading">\
+           {CourseName}</p>\
+        <div class="row">\
+		<div class="col-md-3"></div>\
+            <div class="col-xs-12 col-md-6">\
+                <a class="btn btn-success btn-block" href="#/courses/{id}">Start Course</a>\
+            </div>\
+        </div>\
+    </div>\
+</div>\
+</div>';
+	console.log(courseList.length);
+	for (var i = 0; i < courseList.length; i++) {
+		result += listCourseTemplate.replace("{id}",
+				courseList[i][0]).replace("{CourseName}", courseList[i][1]).replace(
+				"{thumbnail}", courseList[i][2]).replace("{description}",courseList[i][3]);
+	}
+	console.log(result);
+	resultTemplate = resultTemplate.replace("{courses}",result);
+	console.log(resultTemplate);
+	container.innerHTML = resultTemplate;
+}
+document.getElementById("listCourses").addEventListener("click", function() {
+	AjaxReq("course?value=all", renderCourses);
+});
+function AjaxReq(fileName, callback) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", fileName);
+	xhr.onreadystatechange = function(data) {
+		if (this.status == 200 && this.readyState == 4) {
+			callback(this, fileName);
+		}
+	};
+	xhr.send();
+}

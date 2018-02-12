@@ -1,46 +1,52 @@
-<form id="msform" action="signup" method="post">
-	<!-- progressbar -->
-	<ul id="progressbar">
-		<li class="active">Account Setup</li>
-		<li>Personal Details</li>
-		<li>Location Details</li>
-	</ul>
-	<fieldset>
-		<h2 class="fs-title">Create your account</h2>
-		<h3 class="fs-subtitle">This is step 1</h3>
-		<span id="emailAlert" class="alert"></span>
-		<input type="text" id="email" name="email" placeholder="Email" />
-		<span id="usernameAlert" class="alert"></span>
-		<input type="text" id="username" name="username" placeholder="Username" />
-		<span id="passAlert" class="alert"></span>
-		<input type="password" id="pass" name="pass" placeholder="Password" />
-		<span id="cpassAlert" class="alert"></span>
-		<input type="password" id="cpass" name="cpass" placeholder="Confirm Password" />
-		
-		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="button" id="next-one" name="next" class="next action-button" value="Next" />
-	</fieldset>
-	<fieldset>
-		<h2 class="fs-title">Personal Details</h2>
-		<h3 class="fs-subtitle">We will never sell it</h3>
-		<span id="fnameAlert" class="alert"></span>
-		<input type="text" name="fname" id="fname" placeholder="First Name" />
-		<span id="lnameAlert" class="alert"></span>
-		<input type="text" name="lname" id="lname" placeholder="Last Name" />
-		<span id="mobileAlert" class="alert"></span>
-		<input type="text" name="phone" id="phone" placeholder="Phone" />
-		
-		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="button" name="next" class="next action-button" value="Next" />
-	</fieldset>
-	<fieldset>
-		<h2 class="fs-title">Location Details</h2>
-		<h3 class="fs-subtitle">Your presence</h3>
-		<input type="text" name="a_street" placeholder="Door No./Street Name" />
-		<input type="text" name="a_district" placeholder="District" />
-		<input type="text" name="a_state" placeholder="State" />
-		<input type="number" name="a_pincode" placeholder="Pincode" />
-		<input type="button" name="previous" class="previous action-button" value="Previous" />
-		<input type="submit" id="submitBtn" name="submit" class="submit action-button" value="Submit" />
-	</fieldset>
-</form>
+
+<div class="col-sm-3 col-md-3"></div>
+<div id="content-holder" class="container col-sm-6 col-md-6">
+
+	<form id="msform" action="signup" method="post">
+		<!-- progressbar -->
+		<ul id="progressbar">
+			<li class="active">Account Setup</li>
+			<li>Personal Details</li>
+			<li>Location Details</li>
+		</ul>
+		<fieldset>
+			<h2 class="fs-title">Create your account</h2>
+			<h3 class="fs-subtitle">This is step 1</h3>
+			<span id="emailAlert" class="alert"></span> <input type="text"
+				id="email" name="email" placeholder="Email" /> <span
+				id="usernameAlert" class="alert"></span> <input type="text"
+				id="username" name="username" placeholder="Username" /> <span
+				id="passAlert" class="alert"></span> <input type="password"
+				id="pass" name="pass" placeholder="Password" /> <span
+				id="cpassAlert" class="alert"></span> <input type="password"
+				id="cpass" name="cpass" placeholder="Confirm Password" /> <input
+				type="button" name="previous" class="previous action-button"
+				value="Previous" /> <input type="button" id="next-one" name="next"
+				class="next action-button" value="Next" />
+		</fieldset>
+		<fieldset>
+			<h2 class="fs-title">Personal Details</h2>
+			<h3 class="fs-subtitle">We will never sell it</h3>
+			<span id="fnameAlert" class="alert"></span> <input type="text"
+				name="fname" id="fname" placeholder="First Name" /> <span
+				id="lnameAlert" class="alert"></span> <input type="text"
+				name="lname" id="lname" placeholder="Last Name" /> <span
+				id="mobileAlert" class="alert"></span> <input type="text"
+				name="phone" id="phone" placeholder="Phone" /> <input type="button"
+				name="previous" class="previous action-button" value="Previous" />
+			<input type="button" name="next" class="next action-button"
+				value="Next" />
+		</fieldset>
+		<fieldset>
+			<h2 class="fs-title">Location Details</h2>
+			<h3 class="fs-subtitle">Your presence</h3>
+			<input type="text" name="a_street" placeholder="Door No./Street Name" />
+			<input type="text" name="a_district" placeholder="District" /> <input
+				type="text" name="a_state" placeholder="State" /> <input
+				type="number" name="a_pincode" placeholder="Pincode" /> <input
+				type="button" name="previous" class="previous action-button"
+				value="Previous" /> <input type="submit" id="submitBtn"
+				name="submit" class="submit action-button" value="Submit" />
+		</fieldset>
+	</form>
+</div>
