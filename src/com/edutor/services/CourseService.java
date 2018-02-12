@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import com.edutor.main.HibernateUtil;
 import com.edutor.models.Course;
 import com.edutor.models.Media;
+import com.edutor.models.Profile;
 
 public class CourseService {
 	public static List<Course> getCourseByUserName(String username) {
@@ -60,6 +61,17 @@ public class CourseService {
 		session.update(course);
 		session.getTransaction().commit();
 		session.close();
+		return true;
+	}
+	@SuppressWarnings("deprecation")
+	public static boolean register(int courseId,String username){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Profile.class);
+		criteria.add(Restrictions.eq("user.username", username));
+		Profile profile = (Profile)criteria.uniqueResult();
+		System.out.println(profile.getFirstName());
+		session.getTransaction().commit();
 		return true;
 	}
 }

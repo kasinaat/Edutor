@@ -28,7 +28,7 @@ window
 	"hashchange",
 	function () {
 		let hash = window.location.hash;
-		let courseRegex = /\d+$/gm;
+		let courseRegex = /\d+$/;
 		if (hash == "#/login") {
 			AjaxReq("add.html", renderLogin);
 		} else if (hash == "#/signup") {
@@ -38,17 +38,13 @@ window
 			if (!getCookie("currentUser")) {
 				window.location.hash = "#/login";
 			} else {
-				console.log(hash);
-				// AjaxReq("registercourse",renderCourseLanding);
+				console.log(id[0]);
+				AjaxReq("/edutor/registercourse?cid="+id[0]+"&uname="+getCookie("currentUser"),renderCourseLanding);
 			}
 		} else if (hash == "#/courses") {
-			AjaxReq("course?value=all", renderCourses);
+			AjaxReq("/edutor/course?value=all", renderCourses);
 		} else if (hash == "#/home" || hash == "") {
 			document.getElementById("content-holder").innerHTML = "";
-			var user = getCookie("currentUser");
-			if (user) {
-				window.location.href = "dashboard.html";
-			}
 		} else if (hash == "/settings") {
 			closeNav();
 			var ajx = new XMLHttpRequest();
@@ -60,39 +56,49 @@ window
 			};
 			ajx.send();
 		} else if (hash == "#/logout") {
-			delete_cookie("currentUser");
-			window.location.href = "/edutor";
 			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "logout");
+			xhr.open("GET", "/edutor/logout");
 			xhr.send();
+			window.location.href="/edutor";
+			location.reload();
 		}
 	});
-
+window.addEventListener("load",function(){
+	window.location.hash = "";
+});
+//
 //window.addEventListener("load", function () {
-//	
+//	document.getElementById("content-holder").innerHTML = "";
+//	var user = getCookie("currentUser");
+//	if (user && window.location.href != "/edutor/dashboard") {
+//		window.location.href = "dashboard";
+//	}
 //});
+
+function renderCourseLanding(){
+	alert("Course Registered Sucessfully");
+}
 function renderLogin(result, fileName) {
 	document.getElementById("content-holder").innerHTML = result.responseText;
-	let loginFlag = false;
 	document
-		.getElementById('msform')
+		.getElementById('loginButton')
 		.addEventListener(
-		"submit",
+		"click",
 		function () {
+			var loginFlag = true;
 			var username = document.getElementById("username").value;
 			var password = document.getElementById("pass").value;
 			if (username === "" || username == null
 				|| username === undefined) {
 				document.getElementById("usernameAlert").innerText = "Please enter username!";
-				loginFlag = false;
 				e.preventDefault();
 			} else {
 				document.getElementById("usernameAlert").innerText = "";
+				loginFlag = true;
 			}
 			if (password === "" || password === null
 				|| password === undefined) {
 				document.getElementById("passAlert").innerText = "Please enter password!";
-				loginFlag = false;
 				e.preventDefault();
 			} else {
 				document.getElementById("passAlert").innerText = "";
@@ -103,9 +109,16 @@ function renderLogin(result, fileName) {
 				ajx.open("GET","login?username="+username+"&password="+password);
 				ajx.onreadystatechange = function(){
 					if(this.status == 200 && this.readyState == 4){
-						
+						if(username == "admin")
+							window.location.href = "admin";
+						else
+							window.location.href = "dashboard";
+					}
+					else if(this.status == 404 && this.readyState == 4){
+						document.getElementById("errorBox").innerHTML = "Wrong credentials!";
 					}
 				};
+				ajx.send();
 			}
 		});
 }

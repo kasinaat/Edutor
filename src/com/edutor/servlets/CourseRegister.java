@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.edutor.services.CourseService;
+
 
 @WebServlet("/registercourse")
 public class CourseRegister extends HttpServlet {
@@ -20,7 +22,9 @@ public class CourseRegister extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		String courseId = request.getParameter("cid");
+		String username = request.getParameter("uname");
+		CourseService.register(Integer.parseInt(courseId), username);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

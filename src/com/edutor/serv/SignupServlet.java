@@ -40,7 +40,7 @@ public class SignupServlet extends HttpServlet {
 			response.addCookie(cookie);
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
-			response.sendRedirect("dashboard.html");
+			response.sendRedirect("dashboard");
 			pw.close();
 		}
 

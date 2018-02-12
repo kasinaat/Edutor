@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,6 +20,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "edt_user_profile", catalog = "edutor_db", uniqueConstraints = @UniqueConstraint(columnNames = {
 		"mobile_no" }))
+@Inheritance(strategy = InheritanceType.JOINED)
 @TableGenerator(name = "profile_gen", table = "id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "profile_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
 public class Profile {
 	@Id

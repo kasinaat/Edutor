@@ -48,7 +48,7 @@ public class Course {
 	private Set<Media> content = new TreeSet<Media>();
 
 	@ManyToMany(cascade=CascadeType.ALL)
-	@JoinTable(name = "course_student_map", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "profile_id"))
+	@JoinTable(name = "course_student_map", joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
 	private Set<Student> students = new TreeSet<Student>();
 	
 	@OneToOne(cascade = CascadeType.ALL)

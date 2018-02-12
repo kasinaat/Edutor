@@ -6,15 +6,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/dashboard.css">
+<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/dashboard.css">
 <link href="https://fonts.googleapis.com/css?family=Lato:300"
 	rel="stylesheet">
 </head>
 
-<body onload="setUserName()">
-	<nav class="navbar navbar-default my">
+<body>
+	<nav class="navbar navbar-default">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -29,12 +29,6 @@
 			</a>
 		</div>
 		<div id="navbar" class="collapse navbar-collapse">
-			<div class="fleft">
-				<ul class="nav navbar-nav">
-					<li><a id="listCourses" href="#/courses">Courses</a></li>
-
-				</ul>
-			</div>
 			<div class="fright">
 				<ul class="nav navbar-nav">
 					<li><a href="#about">About</a></li>
@@ -54,42 +48,18 @@
 		</div>
 
 
-		<a href="#">My Dashboard</a> <a href="#">My Courses</a> <a href="#">Chat</a>
-		<a id="setting_link" href="#/settings">Settings</a> <a
-			id="logout_link" href="#/logout">Logout</a>
+		<a href="#">My Dashboard</a> <a id="course_link" href="#">Add course</a> <a href="#">Chat</a>
+		<a href="#">Settings</a> <a id="logout_link" href="#">Logout</a>
 	</div>
-	<div class="container" id="content-holder"></div>
+	<div class="container" id="content">
+	
+	</div>
 	<!-- Begin page content -->
 
 </body>
-<script>
-	function getCookie(cname) {
-		var name = cname + "=";
-		var ca = document.cookie.split(';');
-		for (var i = 0; i < ca.length; i++) {
-			var c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return c.substring(name.length, c.length);
-			}
-		}
-		return "";
-	}
-	function setUserName() {
-		if (getCookie("currentUser")) {
-			document.getElementById("current_user").innerHTML = getCookie("currentUser");
-			document.getElementById("currentUser").innerHTML = getCookie("currentUser");
-		} else {
-			window.location.href = "/edutor";
-		}
-	}
-</script>
-<script src="./js/script.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-	crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="../js/bootbox.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
 	integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -98,4 +68,5 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	crossorigin="anonymous"></script>
+<script src="../js/admin.js"></script>
 </html>

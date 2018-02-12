@@ -23,6 +23,9 @@ function getCookie(cname) {
 	}
 	return "";
 }
+window.addEventListener("load",function(){
+	window.location.hash = "";
+});
 window
 		.addEventListener(
 				'load',
@@ -49,7 +52,7 @@ function addCourseContent(){
 		var lessonNumber = document.getElementById("lessonNumber").value;
 		var mediaUrl = document.getElementById("videoUrl").value;
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET","course?value=addcontent&name="+localStorage.courseName+"&lname="+lessonName+"&lnum="+lessonNumber+"&url="+mediaUrl);
+		xhr.open("GET","/edutor/course?value=addcontent&name="+localStorage.courseName+"&lname="+lessonName+"&lnum="+lessonNumber+"&url="+mediaUrl);
 		xhr.send();
 		xhr.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200){
@@ -93,7 +96,7 @@ function addCourses(data) {
 						if (courseFlag) {
 							localStorage.courseName = name;
 							var ajx = new XMLHttpRequest();
-							ajx.open("GET", "course?value=addcourse&name=" + name + "&desc="
+							ajx.open("GET", "/edutor/course?value=addcourse&name=" + name + "&desc="
 									+ description);
 							ajx.send();
 							document.getElementById("content").innerHTML = "<fieldset>\
@@ -133,7 +136,7 @@ function addCourses(data) {
 document.getElementById("course_link").addEventListener("click", function() {
 	closeNav();
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", "addcourse.html");
+	xhr.open("GET", "../addcourse.html");
 	xhr.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 			addCourses(this.responseText);

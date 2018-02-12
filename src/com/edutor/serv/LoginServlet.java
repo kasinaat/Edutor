@@ -32,12 +32,10 @@ public class LoginServlet extends HttpServlet {
 			response.addCookie(cookie);
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
-			if (username.equals("admin")) {
-				response.sendRedirect("admin.html");
-			} else {
-				response.sendRedirect("dashboard.html");
-			}
+			response.setStatus(200);
 			pw.close();
+		} else{
+			response.setStatus(404);
 		}
 	}
 
