@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -21,6 +22,17 @@ public class Student extends Profile {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "student_course_map", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
 	private Set<Course> courses = new HashSet<Course>();
+	
+	@Column(name = "institution")
+	private String institution;
+	
+	public String getInstitution() {
+		return institution;
+	}
+
+	public void setInstitution(String institution) {
+		this.institution = institution;
+	}
 
 	public Set<Course> getCourses() {
 		return courses;

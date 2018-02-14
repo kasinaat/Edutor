@@ -22,7 +22,8 @@ import javax.persistence.TableGenerator;
 @Entity
 @Table(name = "edt_course", catalog = "edutor_db")
 @TableGenerator(name = "course_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "course_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
-public class Course {
+public class Course  {
+
 	@Id
 	@Column(name = "course_id")
 	@GeneratedValue(strategy = GenerationType.TABLE ,generator = "course_gen")

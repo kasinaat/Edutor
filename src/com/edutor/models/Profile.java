@@ -50,7 +50,7 @@ public class Profile {
 
 	@Column(name = "profile_type")
 	@Enumerated(EnumType.STRING)
-	private ProfileType type = ProfileType.STUDENT;
+	private ProfileType type = ProfileType.ADMIN;
 	
 	@Embedded
 	@Column(name = "address")

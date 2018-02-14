@@ -9,12 +9,12 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 @Entity
-@Table(name = "edt_media",catalog = "edutor_db")
-@TableGenerator(name = "media_gen",table="id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "media_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
+@Table(name = "edt_media", catalog = "edutor_db")
+@TableGenerator(name = "media_gen", table = "id_gen", catalog = "edutor_db", pkColumnName = "id_gen", pkColumnValue = "media_id", initialValue = 1, allocationSize = 50, valueColumnName = "id_val")
 public class Media {
 	@Id
 	@Column(name = "media_id")
-	@GeneratedValue(strategy = GenerationType.TABLE,generator="media_gen")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "media_gen")
 	private Integer mediaId;
 
 	@Column(name = "media_title")
@@ -31,10 +31,6 @@ public class Media {
 
 	@Column(name = "lesson_name")
 	private String lessonName;
-	
-	@Column(name = "video_no")
-	private int videoNumber;
-	
 
 	public Integer getMediaId() {
 		return mediaId;
@@ -82,14 +78,6 @@ public class Media {
 
 	public void setLessonName(String lessonName) {
 		this.lessonName = lessonName;
-	}
-
-	public int getVideoNumber() {
-		return videoNumber;
-	}
-
-	public void setVideoNumber(int videoNumber) {
-		this.videoNumber = videoNumber;
 	}
 
 }

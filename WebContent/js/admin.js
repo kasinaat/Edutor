@@ -49,16 +49,15 @@ document.getElementById("logout_link").addEventListener("click", function() {
 function addCourseContent(){
 	document.getElementById("nextVideo").addEventListener("click",function(){
 		var lessonName = document.getElementById("lessonName").value;
-		var lessonNumber = document.getElementById("lessonNumber").value;
 		var mediaUrl = document.getElementById("videoUrl").value;
 		var xhr = new XMLHttpRequest();
-		xhr.open("GET","/edutor/course?value=addcontent&name="+localStorage.courseName+"&lname="+lessonName+"&lnum="+lessonNumber+"&url="+mediaUrl);
+		xhr.open("GET","/edutor/course?value=addcontent&name="+localStorage.courseName+"&lname="+lessonName+"+&url="+mediaUrl);
 		xhr.send();
 		xhr.onreadystatechange = function(){
 			if(this.readyState == 4 && this.status == 200){
 				bootbox.alert("Video Added to course!");
 				document.getElementById("videoUrl").value="";
-				document.getElementById("lessonNumber").value = "";
+				document.getElementById("lessonName").value="";
 			}
 		};
 	});
@@ -104,10 +103,6 @@ function addCourses(data) {
 				<div class=\"form-group\">\
 					<input type=\"text\" id=\"lessonName\" placeholder=\"Lesson Name\" class=\"form-control\" />\
 					<span class=\"alert\" id=\"lessonAlert\"> </span>\
-				</div>\
-				<div class=\"form-group\">\
-					<input type=\"number\" id=\"lessonNumber\" placeholder=\"Lesson Number\" class=\"form-control\" />\
-					<span class=\"alert\" id=\"lessonNumAlert\"> </span>\
 				</div>\
 				<div class=\"form-group\">\
 					<select class=\"form-control\">\

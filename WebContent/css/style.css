@@ -79,7 +79,6 @@ a:hover {
 	background-color: #253e57;
 	color: white;
 }
-
 myStyle {
 	color: white;
 }
@@ -406,7 +405,9 @@ nav {
 	display: block;
 	transition: 0.3s;
 }
-
+.invisible{
+	display: none;
+}
 .sidenav a:hover, .offcanvas a:focus {
 	color: #f1f1f1;
 }
@@ -426,4 +427,83 @@ nav {
 	.sidenav a {
 		font-size: 18px;
 	}
+}.navbar-fixed-left {
+	width: 300px;
+	position: fixed;
+	border-radius: 0;
+	height: 100%;
+  }
+  
+  .navbar-fixed-left .navbar-nav > li {
+	float: none;  /* Cancel default li float: left */
+	width: 198px;
+  }
+  
+  .navbar-fixed-left + .container {
+	padding-left: 160px;
+  }
+  
+  .sidebar{ width:250px;  background-color:#000;transition: all 0.5s  ease-in-out;display:inline-block; }
+.bg-defoult{background-color:#222;}
+.sidebar ul{ list-style:none; margin:0px; padding:0px; }
+.sidebar li a,.sidebar li a.collapsed.active{ display:block; padding:8px 12px; color:#fff;border-left:0px solid #dedede;  text-decoration:none}
+.sidebar li a.active{background-color:#000;border-left:5px solid #dedede; transition: all 0.5s  ease-in-out}
+.sidebar li a:hover{background-color:#000 !important;}
+.sidebar li a i{ padding-right:5px;}
+.sidebar ul li .sub-menu li a{ position:relative}
+.sidebar ul li .sub-menu li a:before{
+    font-family: FontAwesome;
+    content: "\f105";
+    display: inline-block;
+    padding-left: 0px;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+.sidebar ul li .sub-menu li a:hover:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 5px;
+    background-color: #111;
+    height: 100%;
+}
+.sidebar ul li .sub-menu li a:hover{ background-color:#222; padding-left:20px; transition: all 0.5s  ease-in-out}
+.sub-menu{ border-left:5px solid #dedede;}
+	.sidebar li a .nav-label,.sidebar li a .nav-label+span{ transition: all 0.5s  ease-in-out}
+	
+
+	.sidebar.fliph li a .nav-label,.sidebar.fliph li a .nav-label+span{ display:none;transition: all 0.5s  ease-in-out}
+	.sidebar.fliph {
+    width: 42px;transition: all 0.5s  ease-in-out;
+   
+}
+	
+.sidebar.fliph li{ position:relative}
+.sidebar.fliph .sub-menu {
+    position: absolute;
+    left: 39px;
+    top: 0;
+    background-color: #222;
+    width: 150px;
+    z-index: 100;
+}
+.course-name{
+	text-transform:uppercase;
+	font-size:50px;
+	font-weight: bolder;
+}
+.course-intro{
+	width:70%;
+	margin:0 auto 0 auto;
+}
+.course-desc{
+	font-size:25px;
+	padding-top:20px;
+	padding-bottom:20px;
+	line-height: 35px;
+}
+.course-btn{
+	width:100%;
+	padding-bottom:20px;
 }

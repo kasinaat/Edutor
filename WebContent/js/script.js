@@ -28,17 +28,17 @@ window
 	"hashchange",
 	function () {
 		let hash = window.location.hash;
-		let courseRegex = /\d+$/;
+		let courseRegex = /^#\/[courses]+\/\d+$/;
+		let learnRegex = /^#\/[courses]+\/[course]+\/\d+$/;
 		if (hash == "#/login") {
 			AjaxReq("add.html", renderLogin);
 		} else if (hash == "#/signup") {
 			AjaxReq("signup.html", renderSign);
 		} else if (courseRegex.test(hash)) {
-			var id = courseRegex.exec(hash);
+			var id = /\d+$/.exec(hash);
 			if (!getCookie("currentUser")) {
 				window.location.hash = "#/login";
 			} else {
-				console.log(id[0]);
 				AjaxReq("/edutor/registercourse?cid="+id[0]+"&uname="+getCookie("currentUser"),renderCourseLanding);
 			}
 		} else if (hash == "#/courses") {
@@ -61,11 +61,18 @@ window
 			xhr.send();
 			window.location.href="/edutor";
 			location.reload();
+		} else if(hash == "#/settings"){
+			AjaxReq("/edutor/setting.html",updateUserContent);
 		}
 	});
 window.addEventListener("load",function(){
 	window.location.hash = "";
 });
+
+function updateUserContent(data){
+	closeNav();
+	document.getElementById("content-holder").innerHTML = data.responseText;
+}
 //
 //window.addEventListener("load", function () {
 //	document.getElementById("content-holder").innerHTML = "";
@@ -74,9 +81,9 @@ window.addEventListener("load",function(){
 //		window.location.href = "dashboard";
 //	}
 //});
-
-function renderCourseLanding(){
-	alert("Course Registered Sucessfully");
+function renderCourseLanding(data){
+	alert("Course Registered Sucessfully!");
+	window.location.href = "/edutor/clasroom";
 }
 function renderLogin(result, fileName) {
 	document.getElementById("content-holder").innerHTML = result.responseText;
@@ -371,13 +378,14 @@ function renderCourses(data) {
 	var resultTemplate = '<div id="products" class="list-group col-lg-12">{courses}</div>';
 	var listCourseTemplate = '<div class="item col-xs-10 col-lg-4">\
         <div class="thumbnail">\
-    <img class="group list-group-image" src="images/instagram.png" alt="" />\
+    <img class="group list-group-image" src="/edutor/images/instagram.png" alt="" />\
     <div class="caption">\
-        <span class="group inner list-group-item-heading">\
-           {CourseName}</span>\
+        <p class="group inner list-group-item-heading">\
+           {CourseName}</p>\
         <div class="row">\
+		<div class="col-md-3"></div>\
             <div class="col-xs-12 col-md-6">\
-                <a class="btn btn-success" href="#/courses/{id}">Start Course</a>\
+                <a class="btn btn-success btn-block" href="#/courses/{id}">Start Course</a>\
             </div>\
         </div>\
     </div>\
@@ -385,11 +393,13 @@ function renderCourses(data) {
 </div>';
 	console.log(courseList.length);
 	for (var i = 0; i < courseList.length; i++) {
-		result += listCourseTemplate.replace("{id}", courseList[i][0]).replace(
-			"{CourseName}", courseList[i][1]).replace("{thumbnail}",
-			courseList[i][2]).replace("{description}", courseList[i][3]);
+		result += listCourseTemplate.replace("{id}",
+				courseList[i][0]).replace("{CourseName}", courseList[i][1]).replace(
+				"{thumbnail}", courseList[i][2]).replace("{description}",courseList[i][3]);
 	}
-	resultTemplate = resultTemplate.replace("{courses}", result);
+	console.log(result);
+	resultTemplate = resultTemplate.replace("{courses}",result);
+	console.log(resultTemplate);
 	container.innerHTML = resultTemplate;
 }
 function AjaxReq(fileName, callback) {

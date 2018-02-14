@@ -7,6 +7,7 @@ import org.hibernate.criterion.Restrictions;
 import com.edutor.main.HibernateUtil;
 import com.edutor.models.Address;
 import com.edutor.models.Profile;
+import com.edutor.models.Student;
 import com.edutor.models.User;
 
 public class UserService {
@@ -92,19 +93,19 @@ public class UserService {
 		boolean status = true;
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		session.beginTransaction();
-		Profile profile = new Profile();
+		Student student = new Student();
 		User user = session.get(User.class, username);
-		profile.setUser(user);
-		profile.setFirstName(firstName);
-		profile.setLastName(lastName);
-		profile.setMobileNo(mobile);
+		student.setUser(user);
+		student.setFirstName(firstName);
+		student.setLastName(lastName);
+		student.setMobileNo(mobile);
 		Address address = new Address();
 		address.setDistrict(district);
 		address.setPincode(pincode);
 		address.setStreet(street);
 		address.setState(state);
-		profile.setAddress(address);
-		session.save(profile);
+		student.setAddress(address);
+		session.save(student);
 		session.getTransaction().commit();
 		session.close();
 		return status;
