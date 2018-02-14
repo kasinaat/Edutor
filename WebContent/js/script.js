@@ -12,122 +12,127 @@ function getCookie(cname) {
 	}
 	return "";
 }
-function openNav() {
-	document.getElementById("mySidenav").style.width = "250px";
-	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+var nav = false;
+function toggleNav() {
+	if (!nav) {
+		document.getElementById("mySidenav").style.width = "250px";
+		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		nav = true;
+	} else{
+		document.getElementById("mySidenav").style.width = "0";
+		document.body.style.backgroundColor = "#fff";
+		nav = false;
+	}
 }
-var delete_cookie = function (name) {
+var delete_cookie = function(name) {
 	document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 };
-function closeNav() {
-	document.getElementById("mySidenav").style.width = "0";
-	document.body.style.backgroundColor = "#fff";
-}
+
 window
-	.addEventListener(
-	"hashchange",
-	function () {
-		let hash = window.location.hash;
-		let courseRegex = /^#\/[courses]+\/\d+$/;
-		let learnRegex = /^#\/[courses]+\/[course]+\/\d+$/;
-		if (hash == "#/login") {
-			AjaxReq("add.html", renderLogin);
-		} else if (hash == "#/signup") {
-			AjaxReq("signup.html", renderSign);
-		} else if (courseRegex.test(hash)) {
-			var id = /\d+$/.exec(hash);
-			if (!getCookie("currentUser")) {
-				window.location.hash = "#/login";
-			} else {
-				AjaxReq("/edutor/registercourse?cid="+id[0]+"&uname="+getCookie("currentUser"),renderCourseLanding);
-			}
-		} else if (hash == "#/courses") {
-			AjaxReq("/edutor/course?value=all", renderCourses);
-		} else if (hash == "#/home" || hash == "") {
-			document.getElementById("content-holder").innerHTML = "";
-		} else if (hash == "/settings") {
-			closeNav();
-			var ajx = new XMLHttpRequest();
-			ajx.open("GET", "setting.html");
-			ajx.onreadystatechange = function () {
-				if (this.readyState == 4 && this.status == 200) {
-					document.getElementById("content").innerHTML = this.responseText;
-				}
-			};
-			ajx.send();
-		} else if (hash == "#/logout") {
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "/edutor/logout");
-			xhr.send();
-			window.location.href="/edutor";
-			location.reload();
-		} else if(hash == "#/settings"){
-			AjaxReq("/edutor/setting.html",updateUserContent);
-		}
-	});
-window.addEventListener("load",function(){
+		.addEventListener(
+				"hashchange",
+				function() {
+					let hash = window.location.hash;
+					let courseRegex = /^#\/[courses]+\/\d+$/;
+					let learnRegex = /^#\/[courses]+\/[course]+\/\d+$/;
+					if (hash == "#/signup") {
+						AjaxReq("/edutor/signup.html", renderSign);
+					} else if (courseRegex.test(hash)) {
+						var id = /\d+$/.exec(hash);
+						if (!getCookie("currentUser")) {
+							window.location.hash = "#/login";
+						} else {
+							AjaxReq("/edutor/registercourse?cid=" + id[0]
+									+ "&uname=" + getCookie("currentUser"),
+									renderCourseLanding);
+						}
+					} else if (hash == "#/courses") {
+						AjaxReq("/edutor/course?value=all", renderCourses);
+					} else if (hash == "#/home" || hash == "") {
+						document.getElementById("content-holder").innerHTML = "";
+					} else if (hash == "/settings") {
+						closeNav();
+						var ajx = new XMLHttpRequest();
+						ajx.open("GET", "setting.html");
+						ajx.onreadystatechange = function() {
+							if (this.readyState == 4 && this.status == 200) {
+								document.getElementById("content").innerHTML = this.responseText;
+							}
+						};
+						ajx.send();
+					} else if (hash == "#/logout") {
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "/edutor/logout");
+						xhr.send();
+						window.location.href = "/edutor";
+						location.reload();
+					} else if (hash == "#/settings") {
+						AjaxReq("/edutor/setting.html", updateUserContent);
+					}
+				});
+window.addEventListener("load", function() {
 	window.location.hash = "";
 });
 
-function updateUserContent(data){
+function updateUserContent(data) {
 	closeNav();
 	document.getElementById("content-holder").innerHTML = data.responseText;
 }
 //
-//window.addEventListener("load", function () {
-//	document.getElementById("content-holder").innerHTML = "";
-//	var user = getCookie("currentUser");
-//	if (user && window.location.href != "/edutor/dashboard") {
-//		window.location.href = "dashboard";
-//	}
-//});
-function renderCourseLanding(data){
+// window.addEventListener("load", function () {
+// document.getElementById("content-holder").innerHTML = "";
+// var user = getCookie("currentUser");
+// if (user && window.location.href != "/edutor/dashboard") {
+// window.location.href = "dashboard";
+// }
+// });
+function renderCourseLanding(data) {
 	alert("Course Registered Sucessfully!");
 	window.location.href = "/edutor/clasroom";
 }
-function renderLogin(result, fileName) {
-	document.getElementById("content-holder").innerHTML = result.responseText;
+if (document.getElementById("loginButton")) {
 	document
-		.getElementById('loginButton')
-		.addEventListener(
-		"click",
-		function () {
-			var loginFlag = true;
-			var username = document.getElementById("username").value;
-			var password = document.getElementById("pass").value;
-			if (username === "" || username == null
-				|| username === undefined) {
-				document.getElementById("usernameAlert").innerText = "Please enter username!";
-				e.preventDefault();
-			} else {
-				document.getElementById("usernameAlert").innerText = "";
-				loginFlag = true;
-			}
-			if (password === "" || password === null
-				|| password === undefined) {
-				document.getElementById("passAlert").innerText = "Please enter password!";
-				e.preventDefault();
-			} else {
-				document.getElementById("passAlert").innerText = "";
-				loginFlag = true;
-			}
-			if (loginFlag) {
-				let ajx = new XMLHttpRequest();
-				ajx.open("GET","login?username="+username+"&password="+password);
-				ajx.onreadystatechange = function(){
-					if(this.status == 200 && this.readyState == 4){
-						if(username == "admin")
-							window.location.href = "admin";
-						else
-							window.location.href = "dashboard";
-					}
-					else if(this.status == 404 && this.readyState == 4){
-						document.getElementById("errorBox").innerHTML = "Wrong credentials!";
-					}
-				};
-				ajx.send();
-			}
-		});
+			.getElementById('loginButton')
+			.addEventListener(
+					"click",
+					function() {
+						var loginFlag = true;
+						var username = document.getElementById("username").value;
+						var password = document.getElementById("pass").value;
+						if (username === "" || username == null
+								|| username === undefined) {
+							document.getElementById("usernameAlert").innerText = "Please enter username!";
+							e.preventDefault();
+						} else {
+							document.getElementById("usernameAlert").innerText = "";
+							loginFlag = true;
+						}
+						if (password === "" || password === null
+								|| password === undefined) {
+							document.getElementById("passAlert").innerText = "Please enter password!";
+							e.preventDefault();
+						} else {
+							document.getElementById("passAlert").innerText = "";
+							loginFlag = true;
+						}
+						if (loginFlag) {
+							let ajx = new XMLHttpRequest();
+							ajx.open("GET", "/edutor/login?username="
+									+ username + "&password=" + password);
+							ajx.onreadystatechange = function() {
+								if (this.status == 200 && this.readyState == 4) {
+									if (username == "admin")
+										window.location.href = "/edutor/admin";
+									else
+										window.location.href = "/edutor/dashboard";
+								} else if (this.status == 404
+										&& this.readyState == 4) {
+									document.getElementById("errorBox").innerHTML = "Wrong credentials!";
+								}
+							};
+							ajx.send();
+						}
+					});
 }
 function renderSign(result) {
 	document.getElementById("content-holder").innerHTML = result.responseText;
@@ -136,25 +141,25 @@ function renderSign(result) {
 	var animating; // flag to pre quick multi-click glitches
 
 	$(".next").click(
-		function () {
-			if (animating)
-				return false;
-			animating = true;
+			function() {
+				if (animating)
+					return false;
+				animating = true;
 
-			current_fs = $(this).parent();
-			next_fs = $(this).parent().next();
+				current_fs = $(this).parent();
+				next_fs = $(this).parent().next();
 
-			// activate next step on progressbar using the index of next_fs
-			$("#progressbar li").eq($("fieldset").index(next_fs)).addClass(
-				"active");
+				// activate next step on progressbar using the index of next_fs
+				$("#progressbar li").eq($("fieldset").index(next_fs)).addClass(
+						"active");
 
-			// show the next fieldset
-			next_fs.show();
-			// hide the current fieldset with style
-			current_fs.animate({
-				opacity: 0
-			}, {
-					step: function (now, mx) {
+				// show the next fieldset
+				next_fs.show();
+				// hide the current fieldset with style
+				current_fs.animate({
+					opacity : 0
+				}, {
+					step : function(now, mx) {
 						// as the opacity of current_fs reduces to 0 - stored in
 						// "now"
 						// 1. scale current_fs down to 80%
@@ -164,43 +169,43 @@ function renderSign(result) {
 						// 3. increase opacity of next_fs to 1 as it moves in
 						opacity = 1 - now;
 						current_fs.css({
-							'transform': 'scale(' + scale + ')'
+							'transform' : 'scale(' + scale + ')'
 						});
 						next_fs.css({
-							'left': left,
-							'opacity': opacity
+							'left' : left,
+							'opacity' : opacity
 						});
 					},
-					duration: 800,
-					complete: function () {
+					duration : 800,
+					complete : function() {
 						current_fs.hide();
 						animating = false;
 					},
 					// this comes from the custom easing plugin
-					easing: 'easeInOutBack'
+					easing : 'easeInOutBack'
 				});
-		});
+			});
 
 	$(".previous").click(
-		function () {
-			if (animating)
-				return false;
-			animating = true;
+			function() {
+				if (animating)
+					return false;
+				animating = true;
 
-			current_fs = $(this).parent();
-			previous_fs = $(this).parent().prev();
+				current_fs = $(this).parent();
+				previous_fs = $(this).parent().prev();
 
-			// de-activate current step on progressbar
-			$("#progressbar li").eq($("fieldset").index(current_fs))
-				.removeClass("active");
+				// de-activate current step on progressbar
+				$("#progressbar li").eq($("fieldset").index(current_fs))
+						.removeClass("active");
 
-			// show the previous fieldset
-			previous_fs.show();
-			// hide the current fieldset with style
-			current_fs.animate({
-				opacity: 0
-			}, {
-					step: function (now, mx) {
+				// show the previous fieldset
+				previous_fs.show();
+				// hide the current fieldset with style
+				current_fs.animate({
+					opacity : 0
+				}, {
+					step : function(now, mx) {
 						// as the opacity of current_fs reduces to 0 - stored in
 						// "now"
 						// 1. scale previous_fs from 80% to 100%
@@ -211,163 +216,163 @@ function renderSign(result) {
 						// in
 						opacity = 1 - now;
 						current_fs.css({
-							'left': left
+							'left' : left
 						});
 						previous_fs.css({
-							'transform': 'scale(' + scale + ')',
-							'opacity': opacity
+							'transform' : 'scale(' + scale + ')',
+							'opacity' : opacity
 						});
 					},
-					duration: 800,
-					complete: function () {
+					duration : 800,
+					complete : function() {
 						current_fs.hide();
 						animating = false;
 					},
 					// this comes from the custom easing
-					easing: 'easeInOutBack'
+					easing : 'easeInOutBack'
 				});
-		});
+			});
 	var usernameFlag = false;
 	var emailFlag = false;
 	var mobileFlag = false;
 	document
-		.getElementById("username")
-		.addEventListener(
-		"blur",
-		function () {
-			var username = document.getElementById("username").value;
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "profile?user=" + username);
-			xhr.onreadystatechange = function () {
-				if (this.status == 404 && this.readyState == 4) {
-					document.getElementById("usernameAlert").innerText = "Username Already Taken!!";
-				}
-				if (this.status == 200 && this.readyState == 4) {
-					document.getElementById("usernameAlert").innerText = "";
-					usernameFlag = true;
-				}
-			};
-			xhr.send();
-		});
+			.getElementById("username")
+			.addEventListener(
+					"blur",
+					function() {
+						var username = document.getElementById("username").value;
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "/edutor/profile?user=" + username);
+						xhr.onreadystatechange = function() {
+							if (this.status == 404 && this.readyState == 4) {
+								document.getElementById("usernameAlert").innerText = "Username Already Taken!!";
+							}
+							if (this.status == 200 && this.readyState == 4) {
+								document.getElementById("usernameAlert").innerText = "";
+								usernameFlag = true;
+							}
+						};
+						xhr.send();
+					});
 	document
-		.getElementById("email")
-		.addEventListener(
-		"blur",
-		function () {
-			var email = document.getElementById("email").value;
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "profile?email=" + email);
-			xhr.onreadystatechange = function () {
-				if (this.status == 404 && this.readyState == 4) {
-					document.getElementById("emailAlert").innerText = "Mail ID Already Taken!!";
-				}
-				if (this.status == 200 && this.readyState == 4) {
-					document.getElementById("emailAlert").innerText = "";
-					emailFlag = true;
-				}
-			};
-			xhr.send();
-		});
+			.getElementById("email")
+			.addEventListener(
+					"blur",
+					function() {
+						var email = document.getElementById("email").value;
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "/edutor/profile?email=" + email);
+						xhr.onreadystatechange = function() {
+							if (this.status == 404 && this.readyState == 4) {
+								document.getElementById("emailAlert").innerText = "Mail ID Already Taken!!";
+							}
+							if (this.status == 200 && this.readyState == 4) {
+								document.getElementById("emailAlert").innerText = "";
+								emailFlag = true;
+							}
+						};
+						xhr.send();
+					});
 	document
-		.getElementById("phone")
-		.addEventListener(
-		"blur",
-		function () {
-			var mobile = document.getElementById("phone").value;
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", "profile?mobile=" + mobile);
-			xhr.onreadystatechange = function () {
-				if (this.status == 404 && this.readyState == 4) {
-					document.getElementById("mobileAlert").innerText = "Mobile already registered";
-				}
-				if (this.status == 200 && this.readyState == 4) {
-					document.getElementById("mobileAlert").innerText = "";
-					mobileFlag = true;
-				}
-			};
-			xhr.send();
-		});
+			.getElementById("phone")
+			.addEventListener(
+					"blur",
+					function() {
+						var mobile = document.getElementById("phone").value;
+						var xhr = new XMLHttpRequest();
+						xhr.open("GET", "/edutor/profile?mobile=" + mobile);
+						xhr.onreadystatechange = function() {
+							if (this.status == 404 && this.readyState == 4) {
+								document.getElementById("mobileAlert").innerText = "Mobile already registered";
+							}
+							if (this.status == 200 && this.readyState == 4) {
+								document.getElementById("mobileAlert").innerText = "";
+								mobileFlag = true;
+							}
+						};
+						xhr.send();
+					});
 	document
-		.getElementById("msform")
-		.addEventListener(
-		"submit",
-		function (e) {
-			var username = document.getElementById('username').value;
-			var email = document.getElementById('email').value;
-			var password = document.getElementById('pass').value;
-			var cPass = document.getElementById('cpass').value;
-			var fname = document.getElementById("fname").value;
-			var lname = document.getElementById("lname").value;
-			var mobile = document.getElementById("phone").value;
-			var emailRegex = /^[A-Za-z0-9._]*\@[A-Za-z]*\.[A-Za-z]{2,5}$/;
-			var mobileRegex = /^[0-9]{10}$/;
-			if (username === "" || username === null
-				|| username === undefined) {
-				document.getElementById("usernameAlert").innerText = "Please enter username!";
-				e.preventDefault();
-			} else {
-				document.getElementById("usernameAlert").innerText = "";
-			}
-			if (usernameFlag == false) {
-				document.getElementById("usernameAlert").innerText = "Username not available!";
-				e.preventDefault();
-			} else {
-				document.getElementById("usernameAlert").innerText = "";
-			}
-			if (password === "" || password === null
-				|| password === undefined) {
-				document.getElementById("passAlert").innerText = "Please enter password!";
-				e.preventDefault();
-			} else {
-				document.getElementById("passAlert").innerText = "";
-			}
-			if (cPass != password) {
-				document.getElementById("cpassAlert").innerText = "Passwords don't match";
-				e.preventDefault()
-			} else {
-				document.getElementById("cpassAlert").innerText = "";
-			}
-			if (!emailRegex.test(email)) {
-				document.getElementById("emailAlert").innerHTML = "enter a valid email";
-				e.preventDefault();
-			} else {
-				document.getElementById("emailAlert").innerHTML = "";
-			}
-			if (emailFlag == false) {
-				document.getElementById("emailAlert").innerText = "Email already registered!!";
-				e.preventDefault();
-			} else {
-				document.getElementById("emailAlert").innerText = "";
-			}
+			.getElementById("msform")
+			.addEventListener(
+					"submit",
+					function(e) {
+						var username = document.getElementById('username').value;
+						var email = document.getElementById('email').value;
+						var password = document.getElementById('pass').value;
+						var cPass = document.getElementById('cpass').value;
+						var fname = document.getElementById("fname").value;
+						var lname = document.getElementById("lname").value;
+						var mobile = document.getElementById("phone").value;
+						var emailRegex = /^[A-Za-z0-9._]*\@[A-Za-z]*\.[A-Za-z]{2,5}$/;
+						var mobileRegex = /^[0-9]{10}$/;
+						if (username === "" || username === null
+								|| username === undefined) {
+							document.getElementById("usernameAlert").innerText = "Please enter username!";
+							e.preventDefault();
+						} else {
+							document.getElementById("usernameAlert").innerText = "";
+						}
+						if (usernameFlag == false) {
+							document.getElementById("usernameAlert").innerText = "Username not available!";
+							e.preventDefault();
+						} else {
+							document.getElementById("usernameAlert").innerText = "";
+						}
+						if (password === "" || password === null
+								|| password === undefined) {
+							document.getElementById("passAlert").innerText = "Please enter password!";
+							e.preventDefault();
+						} else {
+							document.getElementById("passAlert").innerText = "";
+						}
+						if (cPass != password) {
+							document.getElementById("cpassAlert").innerText = "Passwords don't match";
+							e.preventDefault()
+						} else {
+							document.getElementById("cpassAlert").innerText = "";
+						}
+						if (!emailRegex.test(email)) {
+							document.getElementById("emailAlert").innerHTML = "enter a valid email";
+							e.preventDefault();
+						} else {
+							document.getElementById("emailAlert").innerHTML = "";
+						}
+						if (emailFlag == false) {
+							document.getElementById("emailAlert").innerText = "Email already registered!!";
+							e.preventDefault();
+						} else {
+							document.getElementById("emailAlert").innerText = "";
+						}
 
-			if (fname === "" || fname === null
-				|| fname === undefined) {
-				document.getElementById("fnameAlert").innerText = "Please enter first name";
-				e.preventDefault();
-			} else {
-				document.getElementById("fnameAlert").innerText = "";
-			}
-			if (lname === "" || lname === null
-				|| lname === undefined) {
-				document.getElementById("lnameAlert").innerText = "Please enter last name";
-				e.preventDefault();
-			} else {
-				document.getElementById("lnameAlert").innerText = "";
-			}
-			if (!mobileRegex.test(mobile)) {
-				document.getElementById("mobileAlert").innerText = "Please enter Mobile Number!";
-				e.preventDefault();
-			} else {
-				document.getElementById("mobileAlert").innerText = "";
-			}
-			if (mobileFlag == false) {
-				document.getElementById("mobileAlert").innerText = "Mobile no. already registered!!";
-				e.preventDefault();
-			} else {
-				document.getElementById("mobileAlert").innerText = "";
-			}
+						if (fname === "" || fname === null
+								|| fname === undefined) {
+							document.getElementById("fnameAlert").innerText = "Please enter first name";
+							e.preventDefault();
+						} else {
+							document.getElementById("fnameAlert").innerText = "";
+						}
+						if (lname === "" || lname === null
+								|| lname === undefined) {
+							document.getElementById("lnameAlert").innerText = "Please enter last name";
+							e.preventDefault();
+						} else {
+							document.getElementById("lnameAlert").innerText = "";
+						}
+						if (!mobileRegex.test(mobile)) {
+							document.getElementById("mobileAlert").innerText = "Please enter Mobile Number!";
+							e.preventDefault();
+						} else {
+							document.getElementById("mobileAlert").innerText = "";
+						}
+						if (mobileFlag == false) {
+							document.getElementById("mobileAlert").innerText = "Mobile no. already registered!!";
+							e.preventDefault();
+						} else {
+							document.getElementById("mobileAlert").innerText = "";
+						}
 
-		});
+					});
 
 }
 function renderCourses(data) {
@@ -393,19 +398,19 @@ function renderCourses(data) {
 </div>';
 	console.log(courseList.length);
 	for (var i = 0; i < courseList.length; i++) {
-		result += listCourseTemplate.replace("{id}",
-				courseList[i][0]).replace("{CourseName}", courseList[i][1]).replace(
-				"{thumbnail}", courseList[i][2]).replace("{description}",courseList[i][3]);
+		result += listCourseTemplate.replace("{id}", courseList[i][0]).replace(
+				"{CourseName}", courseList[i][1]).replace("{thumbnail}",
+				courseList[i][2]).replace("{description}", courseList[i][3]);
 	}
 	console.log(result);
-	resultTemplate = resultTemplate.replace("{courses}",result);
+	resultTemplate = resultTemplate.replace("{courses}", result);
 	console.log(resultTemplate);
 	container.innerHTML = resultTemplate;
 }
 function AjaxReq(fileName, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", fileName);
-	xhr.onreadystatechange = function (data) {
+	xhr.onreadystatechange = function(data) {
 		if (this.status == 200 && this.readyState == 4) {
 			callback(this, fileName);
 		}

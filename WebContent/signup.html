@@ -1,6 +1,4 @@
 
-<div class="col-sm-3 col-md-3"></div>
-<div id="content-holder" class="container col-sm-6 col-md-6">
 
 	<form id="msform" action="signup" method="post">
 		<!-- progressbar -->
@@ -32,7 +30,15 @@
 				id="lnameAlert" class="alert"></span> <input type="text"
 				name="lname" id="lname" placeholder="Last Name" /> <span
 				id="mobileAlert" class="alert"></span> <input type="text"
-				name="phone" id="phone" placeholder="Phone" /> <input type="button"
+				name="phone" id="phone" placeholder="Phone" />
+				<select >
+					<option  value="male" >Male</option>
+					<option  value="female">Female</option>
+				</select>
+				<select >
+					<option  value="student" >Student</option>
+					<option  value="instructor">Instructor</option>
+				</select> <input type="button"
 				name="previous" class="previous action-button" value="Previous" />
 			<input type="button" name="next" class="next action-button"
 				value="Next" />
@@ -49,4 +55,3 @@
 				name="submit" class="submit action-button" value="Submit" />
 		</fieldset>
 	</form>
-</div>

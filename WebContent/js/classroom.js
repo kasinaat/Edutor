@@ -3,14 +3,17 @@ $(document).ready(function() {
 		$('.sidebar').toggleClass('fliph');
 	});
 });
-function openNav() {
-	document.getElementById("mySidenav").style.width = "250px";
-	document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-}
-
-function closeNav() {
-	document.getElementById("mySidenav").style.width = "0";
-	document.body.style.backgroundColor = "#fff";
+var nav = false;
+function toggleNav() {
+	if (!nav) {
+		document.getElementById("mySidenav").style.width = "250px";
+		document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+		nav = true;
+	} else{
+		document.getElementById("mySidenav").style.width = "0";
+		document.body.style.backgroundColor = "#fff";
+		nav = false;
+	}
 }
 function renderUserCourses(data) {
 	console.log(data.responseText);
@@ -53,7 +56,7 @@ window.addEventListener("hashchange",function(){
 	if(/^#\/[A-z0-9]+$/.test(hash)){
 		var link = /[A-z0-9]+$/.exec(hash);
 		console.log(link);
-		var embed = '<iframe class="videoStyle" width="854" height="480" src="https://www.youtube.com/embed/{link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+		var embed = '<div class="video"><iframe class="videoStyle" width="854" height="480" src="https://www.youtube.com/embed/{link}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>';
 		document.getElementById("content-holder").innerHTML = embed.replace("{link}",link[0]);
 	}
 	if (hash == "#/logout") {

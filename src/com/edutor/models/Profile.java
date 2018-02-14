@@ -43,14 +43,18 @@ public class Profile {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_fk")
 	private User user;
-
+	
+	@Column(name ="gender")
+	@Enumerated(EnumType.STRING)
+	private Gender gender = Gender.MALE;
+	
 	@Column(name = "profile_status")
 	@Enumerated(EnumType.STRING)
 	private ProfileStatus status = ProfileStatus.COMPLETE;
 
 	@Column(name = "profile_type")
 	@Enumerated(EnumType.STRING)
-	private ProfileType type = ProfileType.ADMIN;
+	private ProfileType type = ProfileType.STUDENT;
 	
 	@Embedded
 	@Column(name = "address")

@@ -2,65 +2,303 @@
 html {
 	min-height: 100%;
 	position: relative;
-	body
-	{
-	margin-bottom
-	:
-	$
-	height-footer;
-}
-
-#footer {
-	bottom: 0;
-	width: 100%;
-	position: absolute;
-	height: $height-footer;
-	background-color: #f5f5f5;
-	.
-	footer-block
-	{
-	margin
-	:
-	20px
-	0;
-}
-
-}
 }
 body {
-	color: white;
-	background: url('http://thecodeplayer.com/uploads/media/gs.png');
-	/*background = gradient + image pattern combo*/
-	background: linear-gradient(rgba(196, 102, 0, 0.2),
-		rgba(155, 89, 182, 0.2)),
-		url('http://thecodeplayer.com/uploads/media/gs.png');
+    font-family: 'Open Sans', sans-serif;
+    line-height: 30px;
+    font-size: 14px;
+}
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
 }
 
-.footer {
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 60px;
-	background-color: black;
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
 }
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+set-pad {
+    padding-top:35px;
+}
+.set-row-pad {
+    padding-top:30px;
+    padding-bottom:50px;
+}
+/*=====================================
+  NAVBAR STYLES 
+    ===================================*/
+
+.logo-custom {
+    max-height: 40px;
+}
+
+#menu {
+    background-color: rgba(28, 43, 75, 1);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    min-height: 70px;
+}
+
+
+.navbar-inverse {
+    border-color: transparent;
+}
+
+    .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > li > a:hover {
+        color: #FFF;
+        padding: 22px 10px;
+    }
+
+
+/*=====================================
+  HOME STYLES 
+    ===================================*/
+.home-sec {
+    padding-top: 10px;
+    padding-bottom: 60px;
+    background: url(../img/header.jpg) no-repeat center center;
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;
+}
+
+    .home-sec .overlay {
+        background: rgba(38, 57, 88, 0.89);
+        min-height: 500px;
+    }
+
+    .home-sec h1 {
+        color: #fff;
+        font-weight: 900;
+        font-size: 50px;
+        text-transform: uppercase;
+        padding-bottom: 35px;
+    }
+
+    .home-sec h3 {
+        text-transform: uppercase;
+    }
+
+
+
+.set-flexi {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0);
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0);
+    -o-box-shadow: 0 1px 4px rgba(0, 0, 0, 0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0);
+    background-color: transparent;
+    border: 0px solid #000;
+    padding-top: 120px;
+}
+
+.flex-control-nav {
+    display: none;
+}
+
+.set-flexi a {
+    margin: 5px;
+}
+/*=====================================
+  TAG LINE STYLES 
+    ===================================*/
+
+.tag-line {
+    background: #E9E9E9;
+    color: #000;
+}
+
+    .tag-line h2 {
+        font-size: 20px;
+        font-weight: 900;
+        padding: 5px 10px 10px 5px;
+        color: #005E5A;
+    }
+
+        .tag-line h2 > i {
+            margin-left: 8px;
+            margin-right: 8px;
+        }
+/*=====================================
+  HEADER LINE STYLES 
+    ===================================*/
+.header-line {
+    font-weight: 900;
+    font-size: 25px;
+    padding-bottom: 5px;
+    padding-top: 25px;
+    color: #000;
+}
+
+h1::after {
+    content: " ";
+    border: solid 2px #2f9484;
+    display: block;
+    width: 200px;
+    margin: 12px auto;
+}
+
+/*=====================================
+  ABOUT STYLES 
+  ===================================*/
+.about-div {
+    padding: 30px;
+}
+
+.icon-round-border {
+    border: 10px double #1A94C4;
+    color: #2f9484;
+    text-align: center;
+    padding-top: 15px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+    .icon-round-border:hover {
+        color: #fff;
+        border: 10px double #fff;
+        background-color: #1A94C4;
+        -webkit-transition: 0.3s;
+        -moz-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+    }
+
+.about-div hr {
+    border: 1px solid #1A94C4;
+}
+
+.about-div h3 {
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.about-div p {
+    padding-top: 10px;
+}
+
+.btn-set {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    margin-bottom: 20px;
+}
+/*=====================================
+  FACULTY STYLES 
+  ===================================*/
+#faculty-sec {
+    background-color: #000;
+    color: #fff;
+}
+
+    #faculty-sec .header-line {
+        color: #fff;
+    }
+.faculty-div h4 {
+    line-height:30px;
+    font-weight:700;
+}
+.faculty-div {
+    padding: 30px;
+}
+
+    .faculty-div hr {
+        border: 1px solid #1A94C4;
+    }
+
+    .faculty-div h3 {
+        font-size: 25px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .faculty-div p {
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+
+    .faculty-div img {
+        border: 10px double #fff;
+    }
+
+/*=====================================
+  CONTACT STYLES 
+  ===================================*/
+#contact-sec {
+    padding-top: 10px;
+    padding-bottom: 60px;
+    background: url(../img/contact.jpg) no-repeat center center;
+    padding: 0;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #fff;
+    background-attachment: fixed;
+}
+
+#contact-sec .overlay {
+        background: rgba(0, 0, 0, 0.76);
+        min-height: 600px;
+    }
+
+    #contact-sec h1 {
+        color:#fff;
+    }
+#contact-sec .form-control{
+    background-color:rgba(255, 255, 255, 0);
+    color:#fff;
+}
+/*=====================================
+  Footer STYLES 
+  ===================================*/
+#footer {
+    padding:5px 20px;
+    background-color:#2d3d5a;
+    text-align:right;
+    color:#fff;
+    font-size:15px;
+}
+
 
 .alert {
 	color: red;
 	font-size: 15px;
-}
-
-a:link {
-	font-size: 18px;
-	color: white;
-}
-
-a:visited {
-	font-size: 18px;
-	color: white;
-}
-
-a:hover {
-	font-size: 18px;
-	color: white;
 }
 
 .fleft {
@@ -75,35 +313,14 @@ a:hover {
 	clear: both;
 }
 
-.navbar-default {
-	background-color: #253e57;
-	color: white;
-}
-myStyle {
-	color: white;
-}
 
-#navbar ul li a {
-	color: white;
-}
 
-.navbar-default .navbar-toggle .icon-bar {
-	background-color: #fff;
-}
 
 .social {
 	width: 40px;
 	margin: 5px;
 }
 
-nav .navbar-header {
-	margin: 0 20px 0 20px;
-	padding: 0;
-}
-
-nav {
-	margin: 0;
-}
 
 .poster {
 	width: 100%;
@@ -139,12 +356,12 @@ nav {
 	width: 0;
 	position: fixed;
 	z-index: 1;
-	top: 0;
+	top: 10;
 	left: 0;
 	background-color: #111;
 	overflow-x: hidden;
 	transition: 0.5s;
-	padding-top: 60px;
+	padding-top: 70px;
 }
 
 .sidenav a {
@@ -178,7 +395,7 @@ nav {
 } /*form styles*/
 #msform {
 	width: 400px;
-	margin: 50px auto;
+	margin: 100px auto;
 	text-align: center;
 	position: relative;
 }
@@ -200,7 +417,7 @@ nav {
 	display: none;
 }
 /*inputs*/
-#msform input, #msform textarea {
+#msform input, #msform textarea,#msform select {
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -294,58 +511,7 @@ nav {
 	color: white;
 }
 
-.thumbnail {
-	margin-bottom: 20px;
-	padding: 0px;
-	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
-	border-radius: 0px;
-}
 
-.item.list-group-item {
-	width: 100%;
-	background-color: #fff;
-	margin-bottom: 10px;
-}
-
-.item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover
-	{
-	background: #428bca;
-}
-
-.item.list-group-item .list-group-image {
-	margin-right: 10px;
-}
-
-.item.list-group-item .thumbnail {
-	margin-bottom: 0px;
-}
-
-.item.list-group-item .caption {
-	padding: 9px 9px 0px 9px;
-}
-
-.item.list-group-item:nth-of-type(odd) {
-	background: #eeeeee;
-}
-
-.item.list-group-item:before, .item.list-group-item:after {
-	display: table;
-	content: " ";
-}
-
-
-.item.list-group-item:after {
-	clear: both;
-}
-
-.list-group-item-text {
-	margin: 0 0 11px;
-}
-.list-group-item-heading{
-	font-size:20px;
-	font-weight: bolder;
-}
 .head{
 	margin: 0 auto 0 auto;
 }
@@ -369,81 +535,13 @@ nav {
 	margin: 0 0 0 50px;
 }
 
-.myBtn {
-	border: 2px solid #253e57;
-	color: white;
-	background-color: #253e57;
-	font-size: 14px;
-	font-weight: bold;
-	border-radius: 3px;
-	cursor: pointer;
-}
 
 .btn:hover{
 	background-color: #253e57;
 }
 
-
-.sidenav {
-	height: 100%;
-	width: 0;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: #111;
-	overflow-x: hidden;
-	transition: 0.5s;
-	padding-top: 60px;
-}
-
-.sidenav a {
-	padding: 8px 8px 8px 32px;
-	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
-}
-.invisible{
-	display: none;
-}
-.sidenav a:hover, .offcanvas a:focus {
-	color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav a {
-		font-size: 18px;
-	}
-}.navbar-fixed-left {
-	width: 300px;
-	position: fixed;
-	border-radius: 0;
-	height: 100%;
-  }
   
-  .navbar-fixed-left .navbar-nav > li {
-	float: none;  /* Cancel default li float: left */
-	width: 198px;
-  }
-  
-  .navbar-fixed-left + .container {
-	padding-left: 160px;
-  }
-  
-  .sidebar{ width:250px;  background-color:#000;transition: all 0.5s  ease-in-out;display:inline-block; }
+  .sidebar{ width:250px;margin-top:70px; height:100%;  background-color:#000;transition: all 0.5s  ease-in-out;display:inline-block; }
 .bg-defoult{background-color:#222;}
 .sidebar ul{ list-style:none; margin:0px; padding:0px; }
 .sidebar li a,.sidebar li a.collapsed.active{ display:block; padding:8px 12px; color:#fff;border-left:0px solid #dedede;  text-decoration:none}
@@ -506,4 +604,10 @@ nav {
 .course-btn{
 	width:100%;
 	padding-bottom:20px;
+}
+.video{
+	width:854px;
+}
+#content-holder{
+	display:inline-block;
 }
